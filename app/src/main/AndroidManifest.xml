@@ -16,8 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityYeniOdeme"
-            android:parentActivityName=".ActivityMain"></activity>
+        <activity
+            android:name=".ActivityYeniOdeme"
+            android:parentActivityName=".ActivityMain" />
+        <activity android:name=".ActivityTumKategorilerOdemeler" />
+
+        <provider
+            android:name=".data.OdemelerProvider"
+            android:authorities="com.example.lenovo.odemetakip.odemelerprovider"
+            android:exported="true" />
+
+        <service
+            android:name=".services.BildirimServisi"
+            android:exported="false"></service>
     </application>
 
 </manifest>
