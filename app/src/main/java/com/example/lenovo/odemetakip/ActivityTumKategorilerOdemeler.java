@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.example.lenovo.odemetakip.adapter.AdapterOdemelerListesi;
 import com.example.lenovo.odemetakip.data.Odemeler;
@@ -17,7 +18,9 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
 
     private RecyclerView rv_tumOdemelerRecyclerListe;
     private AdapterOdemelerListesi mAdapterOdemelerListesi;
+    private TextView tx_kategoriIsmi;
 
+    String gelenKategori;
 
     public static final Uri CONTENT_URI= OdemelerProvider.CONTENT_URI;
 
@@ -31,9 +34,17 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tum_kategoriler_odemeler);
 
+
+        gelenKategori=getIntent().getExtras().getString("OdemeKategoriAdi");
+
+        tx_kategoriIsmi=findViewById(R.id.tumOdemeler_kategoriIsmi);
+        tx_kategoriIsmi.setText(gelenKategori+" Ödemelerim");
+
+
         rv_tumOdemelerRecyclerListe=findViewById(R.id.rv_tum_odemeler_liste);
 
         LinearLayoutManager manager=new LinearLayoutManager(this);
+      
         rv_tumOdemelerRecyclerListe.setLayoutManager(manager);
 
         mAdapterOdemelerListesi=new AdapterOdemelerListesi(this,tumOdemeler);
@@ -50,15 +61,15 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
     public void dataGuncelle()
     {
         tumOdemeler.clear();
-        tumOdemeler=tumOdemeleriGetir();
+        tumOdemeler=tumOdemeleriGetir(gelenKategori);
         mAdapterOdemelerListesi.update(tumOdemeler);
 
     }
 
-    private ArrayList<Odemeler> tumOdemeleriGetir()
+    private ArrayList<Odemeler> tumOdemeleriGetir(String gelenKategori)
     {
         //2. yi null geçtik hepsini getir dedik columnların.
-        Cursor cursor=getContentResolver().query(CONTENT_URI,new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu"},null,null,null);
+        Cursor cursor=getContentResolver().query(CONTENT_URI,new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu"},"OdemeKategoriAdi=?",new String[]{gelenKategori},null);
 
 
 

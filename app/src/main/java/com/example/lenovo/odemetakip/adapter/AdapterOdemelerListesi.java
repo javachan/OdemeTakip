@@ -26,11 +26,15 @@ public class AdapterOdemelerListesi extends RecyclerView.Adapter<RecyclerView.Vi
     private ContentResolver resolver;
 
 
+
+
+
     public AdapterOdemelerListesi(Context context,ArrayList<Odemeler> tumOdemeler) {
         this.mInflater = LayoutInflater.from(context);
         this.tumOdemeler = tumOdemeler;
         this.resolver = context.getContentResolver();
         //context alıp kolayca hallettik.
+
     }
 
     @NonNull

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class ActivityMain extends AppCompatActivity {
 
-    CardView aa;
+    CardView ev1, alisveris2, kisisel3, bitenler4;
     private Button yeniOdemeButon;
 
     public static final Uri CONTENT_URI= OdemelerProvider.CONTENT_URI;
@@ -40,14 +40,17 @@ public class ActivityMain extends AppCompatActivity {
 
 
         yeniOdemeButon=findViewById(R.id.btn_yeni_odeme);
-        aa=findViewById(R.id.cardview2);
+        ev1=findViewById(R.id.cardview1_ev);
+        alisveris2=findViewById(R.id.cardview2_alisveris);
+        kisisel3=findViewById(R.id.cardview3_kisisel);
+        bitenler4=findViewById(R.id.cardview6_bitenler);
 
 
 
         dataGuncelle();
 
 
-        aa.setOnClickListener(new View.OnClickListener() {
+        ev1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //eğer 1. karta(ev) kartına tıklanmışsa textkategorim ev ve ona göre sorgu yapılır.
@@ -68,10 +71,38 @@ public class ActivityMain extends AppCompatActivity {
 
                 VERİLER ALINIYOR. BAŞARILI BİR ŞEKİLDE.(----- TİRELERE KADAR OLANLAR TEK BİR ODEMENİN BİLGİLERİ.)
                 */
-                Intent denemei=new Intent(ActivityMain.this,ActivityTumKategorilerOdemeler.class);
-                startActivity(denemei);
+                Intent evOdemelerIntent=new Intent(ActivityMain.this,ActivityTumKategorilerOdemeler.class);
+                evOdemelerIntent.putExtra("OdemeKategoriAdi","Ev");
+                startActivity(evOdemelerIntent);
 
 
+            }
+        });
+
+
+        alisveris2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent alisverisOdemelerIntent=new Intent(ActivityMain.this,ActivityTumKategorilerOdemeler.class);
+                alisverisOdemelerIntent.putExtra("OdemeKategoriAdi","Alışveriş");
+                startActivity(alisverisOdemelerIntent);
+            }
+        });
+
+        kisisel3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent kisiselOdemelerIntent=new Intent(ActivityMain.this,ActivityTumKategorilerOdemeler.class);
+                kisiselOdemelerIntent.putExtra("OdemeKategoriAdi","Kişisel");
+                startActivity(kisiselOdemelerIntent);
+            }
+        });
+        bitenler4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent bitenOdemelerIntent=new Intent(ActivityMain.this,ActivityTumKategorilerOdemeler.class);
+                bitenOdemelerIntent.putExtra("OdemeKategoriAdi","Bitenler");
+                startActivity(bitenOdemelerIntent);
             }
         });
 
@@ -95,7 +126,7 @@ public class ActivityMain extends AppCompatActivity {
         AlarmManager alarmManager= (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent bildirimIntent=new Intent(this, BildirimServisi.class);
         PendingIntent pendingIntent=PendingIntent.getService(this,100, bildirimIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,5000,3600000,pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,10000,3600000,pendingIntent);
         ///
     }
 

@@ -6,12 +6,12 @@
         <item>Ev</item>
         <item>Alışveriş</item>
         <item>Kişisel</item>
-        <item>Ödemeler</item>
         <item>Bitenler</item>
     </string-array>
 
 
     <string-array name="taksitler_array">
+        <item>0</item>
         <item>1</item>
         <item>3</item>
         <item>6</item>
