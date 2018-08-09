@@ -4,16 +4,27 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.example.lenovo.odemetakip.data.OdemeTakipContract.Odemeler;
+import com.example.lenovo.odemetakip.data.OdemeTakipContract.GunuGelenOdemeler;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME="odemetakip.db";
-    private static final int DATABASE_VERSION=1;
+    private static final int DATABASE_VERSION=2;
     private static final String TABLE_ODEMELER_CREATE=
             "create table "+Odemeler.TABLE_NAME+"("+Odemeler._ID+" integer PRIMARY KEY AUTOINCREMENT,"+Odemeler.COLUMN_ODEME_BASLIK+
              " text,"+Odemeler.COLUMN_ODEME_KATEGORI_ADI+" text,"+Odemeler.COLUMN_ODEME_ODENEN_TAKSIT_SAYISI+" integer default 0,"+Odemeler.COLUMN_ODEME_KALAN_TAKSIT_SAYISI+
                     " integer,"+Odemeler.COLUMN_ODEME_AYLIK_FIYAT+" integer,"+Odemeler.COLUMN_ODEME_AYLIK_HATIRLAT+" integer,"+Odemeler.COLUMN_ODEME_HATIRLATMA_AY_GUNU+" integer)";
+
+
+
+
+    private static final String TABLE_GUNU_GELEN_ODEMELER_CREATE=
+            "create table "+GunuGelenOdemeler.TABLE_NAME+"("+GunuGelenOdemeler._ID+" integer PRIMARY KEY,"+GunuGelenOdemeler.COLUMN_ODEME_BASLIK+
+                    " text, "+GunuGelenOdemeler.COLUMN_ODEME_ODENEN_TAKSIT_SAYISI+" integer default 0,"+GunuGelenOdemeler.COLUMN_ODEME_KALAN_TAKSIT_SAYISI+
+                    " integer,"+GunuGelenOdemeler.COLUMN_ODEME_AYLIK_FIYAT+" integer," +GunuGelenOdemeler.COLUMN_ODEME_ODENDIMI+
+                    " text default 'Ödenmedi')";
+
 
 
     /*private static final String TABLE_ODEMELER_CREATE=
@@ -41,6 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         sqLiteDatabase.execSQL(TABLE_ODEMELER_CREATE);
+        sqLiteDatabase.execSQL(TABLE_GUNU_GELEN_ODEMELER_CREATE);
 
     }
 
@@ -49,6 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         sqLiteDatabase.execSQL("Drop Table If Exists "+Odemeler.TABLE_NAME);
+        sqLiteDatabase.execSQL("Drop Table If Exists "+GunuGelenOdemeler.TABLE_NAME);
         onCreate(sqLiteDatabase);
         //database version değiştiğinde.
 

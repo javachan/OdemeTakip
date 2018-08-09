@@ -242,7 +242,7 @@
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/cardview5"
+                android:id="@+id/cardview5_gunu_gelenler"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
@@ -269,7 +269,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/destek"
+                        android:src="@drawable/dayicon"
                         android:tint="@color/anaYesil" />
 
 
@@ -277,7 +277,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
-                        android:text="Destek"
+                        android:text="Günü Gelenler"
                         android:textAlignment="center"
                         android:textColor="@color/anaYesil"
                         android:textSize="18sp" />

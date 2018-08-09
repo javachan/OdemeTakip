@@ -44,7 +44,7 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
         rv_tumOdemelerRecyclerListe=findViewById(R.id.rv_tum_odemeler_liste);
 
         LinearLayoutManager manager=new LinearLayoutManager(this);
-      
+
         rv_tumOdemelerRecyclerListe.setLayoutManager(manager);
 
         mAdapterOdemelerListesi=new AdapterOdemelerListesi(this,tumOdemeler);

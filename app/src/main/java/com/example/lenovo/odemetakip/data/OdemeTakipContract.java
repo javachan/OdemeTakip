@@ -20,6 +20,17 @@ public class OdemeTakipContract {
 
     }
 
+    public  static final class GunuGelenOdemeler
+    {
+        public static final String TABLE_NAME="gunu_gelen_odemeler";
+        public static final String _ID="GunOdemeId";
+        public static final String COLUMN_ODEME_BASLIK="GunOdemeBaslik";
+        public static final String COLUMN_ODEME_ODENEN_TAKSIT_SAYISI="GunOdemeOdenenTaksitSayisi";
+        public static final String COLUMN_ODEME_KALAN_TAKSIT_SAYISI="GunOdemeKalanTaksitSayisi";
+        public static final String COLUMN_ODEME_AYLIK_FIYAT="GunOdemeAylikFiyat";
+        public static final String COLUMN_ODEME_ODENDIMI="GunOdemeOdendimi";
+    }
+
 
 
 
