@@ -41,6 +41,8 @@ public class ActivityGunuGelenler extends AppCompatActivity {
 
         dataGuncelle();
 
+
+
        
 
 
@@ -48,7 +50,7 @@ public class ActivityGunuGelenler extends AppCompatActivity {
 
     }
 
-    private void dataGuncelle()
+    public void dataGuncelle()
     {
         tumGunuGelenOdemeler.clear();
         tumGunuGelenOdemeler=tumGunuGelenOdemeleriGetir();

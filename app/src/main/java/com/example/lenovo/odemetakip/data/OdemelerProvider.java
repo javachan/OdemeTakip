@@ -138,6 +138,19 @@ public class OdemelerProvider extends ContentProvider {
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String s, @Nullable String[] strings) {
+        switch (matcher.match(uri))
+        {
+            case 1:
+            {
+                int id=db.update(Odemeler.TABLE_NAME,contentValues,s,strings);
+                break;
+            }
+            case 2:
+            {
+                int id=db.update(GunuGelenOdemeler.TABLE_NAME,contentValues,s,strings);
+                break;
+            }
+        }
         return 0;
     }
 }
