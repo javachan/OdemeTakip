@@ -20,17 +20,23 @@ import com.example.lenovo.odemetakip.R;
 import com.example.lenovo.odemetakip.data.Odemeler;
 import com.example.lenovo.odemetakip.data.OdemelerProvider;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @SuppressLint("ValidFragment")
 public class FragmentDialogOdeme  extends DialogFragment
 {
 
     static final Uri CONTENT_URI_GUNU_GELENLER= OdemelerProvider.CONTENT_URI_GUNU_GELEN_ODEMELER; //ana linki aldık.
     static final Uri CONTENT_URI= OdemelerProvider.CONTENT_URI; //ana linki aldık.
+     static final Uri CONTENT_URI_GECMIS_ODEMELER=OdemelerProvider.CONTENT_URI_GECMIS_ODEMELER; //ana linki aldık.
 
     private Button evetOdendi;
     private Button hayirOdenmedi;
 
     private int guncellenecekID;
+
+
 
 
     public FragmentDialogOdeme(int gelenId)
@@ -86,6 +92,24 @@ public class FragmentDialogOdeme  extends DialogFragment
                 Log.e("err","odenen: "+String.valueOf(odenenTaksitSayisi+1));
 
 
+                //GECMIS ODEMELER TABLOSUNA EKLEME.
+                /**
+                 * bu alttaki işlemlerden önce ödenentaksit ve kalantaksit sayisini arttırmamdan
+                 * gecmis odemeler tablosuna ekleriz.7
+                 *
+                 * ödeme tarihide ekleyip dateformat ile her ödemenin üstüne yazılır
+                 *
+                 */
+
+                gecmisOdemelerTablosunaEkle(anaVeriler);
+
+
+
+
+                //
+
+
+
 
                 anaVeriler.setOdemeOdenenTaksitSayisi(odenenTaksitSayisi+1);
                 anaVeriler.setOdemeKalanTaksitSayisi(kalanTaksitSayisi-1);
@@ -97,6 +121,9 @@ public class FragmentDialogOdeme  extends DialogFragment
 
                 //update komutu çalışacak.
                 //consructor ile gelen baslik adi, kalan ay vs. göre ilgili veriyi bulup güncelleyecek günügelenler tablosunda.
+
+
+
 
 
 
@@ -118,6 +145,29 @@ public class FragmentDialogOdeme  extends DialogFragment
                 dismiss();
             }
         });
+
+    }
+
+    private void gecmisOdemelerTablosunaEkle(Odemeler anaVeriler)
+    {
+        ContentValues values=new ContentValues();
+        values.put("GecmisOdemeId", String.valueOf(anaVeriler.getOdemeId()));
+        values.put("GecmisOdemeBaslik",anaVeriler.getOdemeBaslik());
+        values.put("GecmisOdemeOdenenTaksitSayisi",String.valueOf(anaVeriler.getOdemeOdenenTaksitSayisi()+1));
+        values.put("GecmisOdemeAylikFiyat",String.valueOf(anaVeriler.getOdemeAylikFiyat()));
+
+        Date simdi=new Date();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("EEE, d MMM, k:mm");
+
+        String tarih=simpleDateFormat.format(simdi);
+
+
+
+        values.put("GecmisOdemeOdemeTarihi",tarih);
+
+
+        getActivity().getContentResolver().insert(CONTENT_URI_GECMIS_ODEMELER,values);
+        Log.e("gecmisEkleme",tarih+" inde "+String.valueOf(anaVeriler.getOdemeId())+"id nin"+String.valueOf(anaVeriler.getOdemeOdenenTaksitSayisi())+". taksit odendi.");
 
     }
 
