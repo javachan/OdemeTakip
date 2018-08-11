@@ -21,7 +21,9 @@
         <activity
             android:name=".ActivityYeniOdeme"
             android:parentActivityName=".ActivityMain" />
-        <activity android:name=".ActivityTumKategorilerOdemeler" />
+        <activity
+            android:name=".ActivityTumKategorilerOdemeler"
+            android:parentActivityName=".ActivityMain" />
 
         <provider
             android:name=".data.OdemelerProvider"
@@ -41,7 +43,19 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ActivityGunuGelenler"></activity>
+        <activity
+            android:name=".ActivityGunuGelenler"
+            android:parentActivityName=".ActivityMain" />
+        <activity
+            android:name=".ActivityDetayliBilgiler"
+            android:parentActivityName=".ActivityTumKategorilerOdemeler" />
+        <activity
+            android:name=".ActivityDetayliBilgiler2"
+            android:label="@string/title_activity_detayli_bilgiler2"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ActivityTumKategorilerOdemeler"/>
+        <activity android:name=".ActivityGecmisTumOdemeler"
+            android:parentActivityName=".ActivityTumKategorilerOdemeler"></activity>
     </application>
 
 </manifest>

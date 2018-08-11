@@ -66,26 +66,7 @@ public class BildirimServisi extends IntentService {
 
 
 
-        /////////////////////////////////////////////TABLO SIFIRLAMA 23 DE/////////////////////////77
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat mdformat = new SimpleDateFormat("HH");
-        String strDate = mdformat.format(calendar.getTime());
-
-        Log.e("saat",strDate);
-
-        if(strDate.equals("23"))
-        {
-            //her gün saat 23 de odemeGunuGelenler tablom sıfırlansın ki bir sonraki ay ödemesi gelenler için
-            //yeniden bildirim gönderilebilsin.
-
-            gunuGelenOdemelerTablosunuTemizle();
-
-            Log.e("saat","calisiyor.");
-            //eğer saat 23 ise, ödenenler i temizle ki bir sonraki ay bildirim gidebilsin.
-        }
-
-        //////////////////////////////////////////////////77
 
 
 
@@ -100,7 +81,27 @@ public class BildirimServisi extends IntentService {
 
                 //deneme ekleme.. eğer bildirim gerekliyse günü gelenlerde var mı kontrol etsin.
 
-                if(gunuGelenlerdeVarMi(geciciOdeme.getOdemeId()))
+                /////////////////////////////////////////////TABLO SIFIRLAMA 23 DE/////////////////////////77
+
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat mdformat = new SimpleDateFormat("HH");
+                String strDate = mdformat.format(calendar.getTime());
+
+                Log.e("saat",strDate);
+
+                if(strDate.equals("23"))
+                {
+                    //her gün saat 23 de odemeGunuGelenler tablom sıfırlansın ki bir sonraki ay ödemesi gelenler için
+                    //yeniden bildirim gönderilebilsin.
+
+                    gunuGelenOdemelerTablosunuTemizle();
+
+                    Log.e("saat","calisiyor.");
+                    //eğer saat 23 ise, ödenenler i temizle ki bir sonraki ay bildirim gidebilsin.
+                }
+
+                //////////////////////////////////////////////////77
+               else if(gunuGelenlerdeVarMi(geciciOdeme.getOdemeId()))
                 {
                     //varsa ekleme yapmasın.
                     Log.e("var",geciciOdeme.getOdemeBaslik());

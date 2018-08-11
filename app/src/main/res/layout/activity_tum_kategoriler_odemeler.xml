@@ -1,30 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityTumKategorilerOdemeler"
     android:orientation="vertical"
-    android:background="@color/anaYesil">
+    android:background="@color/anaYesil2">
+
+    <ImageView
+        android:id="@+id/iv_tumKatarkaplanImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        />
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></include>
 
     
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_below="@id/toolbar"
+
+        android:layout_marginBottom="45dp"
         android:id="@+id/tumOdemeler_kategoriIsmi"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:textSize="30sp"
+
+        android:textSize="35sp"
         android:textAlignment="center"
         android:textColor="@color/anaBeyaz"
         />
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/tumOdemeler_kategoriIsmi"
         android:id="@+id/rv_tum_odemeler_liste"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+
+
+
+</RelativeLayout>

@@ -53,7 +53,7 @@ public class AdapterGunuGelenOdemelerListesi extends RecyclerView.Adapter<Recycl
         holder.tiklanacakListe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, String.valueOf(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+
 
                 if(tumGunuGelenOdemeler.get(holder.getAdapterPosition()).getGunOdemeOdendimi().equals("Ödenmedi")) {
                     FragmentDialogOdeme fragmentDialogOdeme = new FragmentDialogOdeme(Integer.valueOf(tumGunuGelenOdemeler.get(holder.getAdapterPosition()).getGunOdemeId()));

@@ -21,12 +21,15 @@ public class OdemelerProvider extends ContentProvider {
     static final String CONTENT_AUTHORITY="com.example.lenovo.odemetakip.odemelerprovider";
     static final String PATH_ODEMELER="odemeler";
     static final String PATH_GUNU_GELEN_ODEMELER="gunu_gelen_odemeler";
+    static final String PATH_GECMIS_ODEMELER="gecmis_odemeler";
     static final Uri BASE_CONTENT_URI=Uri.parse("content://"+CONTENT_AUTHORITY);
     public static final Uri CONTENT_URI=Uri.withAppendedPath(BASE_CONTENT_URI,PATH_ODEMELER);
     //content://com.example.lenovo.notsepetiapp.odemelerprovider/odemeler linki olusuyor.
 
     //sorgu calısırken uri olarak bunu  yollayacağım.
     public static final Uri CONTENT_URI_GUNU_GELEN_ODEMELER=Uri.withAppendedPath(BASE_CONTENT_URI,PATH_GUNU_GELEN_ODEMELER);
+
+    public static final Uri CONTENT_URI_GECMIS_ODEMELER=Uri.withAppendedPath(BASE_CONTENT_URI,PATH_GECMIS_ODEMELER);
 
 
 
@@ -41,6 +44,7 @@ public class OdemelerProvider extends ContentProvider {
         matcher=new UriMatcher(UriMatcher.NO_MATCH);
         matcher.addURI(CONTENT_AUTHORITY,PATH_ODEMELER, 1);
         matcher.addURI(CONTENT_AUTHORITY,PATH_GUNU_GELEN_ODEMELER,2);
+        matcher.addURI(CONTENT_AUTHORITY,PATH_GECMIS_ODEMELER,3);
 
     }
 
@@ -71,6 +75,10 @@ public class OdemelerProvider extends ContentProvider {
 
             case 2: {
                 cursor = db.query(GunuGelenOdemeler.TABLE_NAME, projection, selection, selectionArgs, sortOrder, null, null);
+                break;
+            }
+            case 3: {
+                cursor = db.query(OdemeTakipContract.GecmisOdemeler.TABLE_NAME, projection, selection, selectionArgs, sortOrder, null, null);
                 break;
             }
         }
@@ -108,6 +116,16 @@ public class OdemelerProvider extends ContentProvider {
                 if(eklenenSatirID>0)
                 {
                     Uri _uri= ContentUris.withAppendedId(CONTENT_URI_GUNU_GELEN_ODEMELER,eklenenSatirID); //analinkimiz/1, analinkimiz/2 vs...
+                    return _uri;
+                }
+                break;
+            }
+            case 3:
+            {
+                long eklenenSatirID=db.insert(OdemeTakipContract.GecmisOdemeler.TABLE_NAME,null,contentValues);
+                if(eklenenSatirID>0)
+                {
+                    Uri _uri= ContentUris.withAppendedId(CONTENT_URI_GECMIS_ODEMELER,eklenenSatirID); //analinkimiz/1, analinkimiz/2 vs...
                     return _uri;
                 }
                 break;

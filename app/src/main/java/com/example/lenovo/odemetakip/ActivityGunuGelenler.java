@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import com.example.lenovo.odemetakip.adapter.AdapterGunuGelenOdemelerListesi;
 import com.example.lenovo.odemetakip.data.GunuGelenOdemeler;
@@ -23,12 +24,20 @@ public class ActivityGunuGelenler extends AppCompatActivity {
     public static final Uri CONTENT_URI_GUNU_GELEN_ODEMELER= OdemelerProvider.CONTENT_URI_GUNU_GELEN_ODEMELER;
 
     ArrayList<GunuGelenOdemeler> tumGunuGelenOdemeler=new ArrayList<>();
-
+    private Toolbar mTolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gunu_gelenler);
+
+
+        mTolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(mTolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
+
 
 
         rv_gunuGelenOdemelerRecycListe=findViewById(R.id.rc_gunuGelenlerListe);
@@ -83,4 +92,6 @@ public class ActivityGunuGelenler extends AppCompatActivity {
         }
         return tumGunuGelenOdemeler;
     }
+
+
 }

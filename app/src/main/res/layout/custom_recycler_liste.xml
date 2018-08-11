@@ -1,108 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/anaBeyaz"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:orientation="vertical"
-    android:layout_marginTop="25dp">
+    >
 
-    <TextView
-        android:id="@+id/custom_liste_odemeBaslik"
-        android:layout_marginTop="5dp"
-        android:textAlignment="center"
+
+
+
+    <GridLayout
+
+        android:id="@+id/grid_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ödeme başlığı"
-        android:textSize="30sp"/>
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:alignmentMode="alignMargins"
+        android:columnCount="1"
+        android:columnOrderPreserved="false"
 
+        android:paddingLeft="17dp"
+        android:paddingRight="17dp"
+        android:paddingBottom="15dp"
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Aylık Ödenen Miktar:"
-        android:textSize="13sp"/>
+        android:rowCount="3">
 
-    <TextView
-        android:id="@+id/custom_liste_aylik_odeme_miktar"
-        android:layout_marginTop="5dp"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="750 TL"
-        android:textSize="22sp"/>
+        <android.support.v7.widget.CardView
 
+            app:cardCornerRadius="25dp"
+            android:clickable="true"
+            android:layout_height="67dp"
+            android:layout_width="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="left"
-            android:layout_marginLeft="35dp">
 
             <TextView
-                android:layout_marginTop="5dp"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
+                android:id="@+id/tx_tumOdemelerBaslik"
+                android:layout_gravity="center_vertical|left"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
-                android:text="Kalan Ay"
-                android:textSize="13sp"/>
+                android:text="Deneme"
+                android:paddingLeft="5dp"
+                android:textColor="@color/anaYesil2"
+                android:drawableLeft="@drawable/searchicon"
+                android:drawableTint="@color/anaYesil"
+                android:textSize="27sp" />
 
-            <TextView
-                android:id="@+id/custom_liste_kalan_ay_sayisi"
-                android:layout_marginTop="5dp"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="11"
-                android:textSize="22sp"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-
-           >
-
-            <TextView
-                android:layout_marginTop="5dp"
-                android:textAlignment="viewEnd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ödenen Ay"
-                android:textSize="13sp"
-                android:paddingRight="35dp"
-                />
-
-            <TextView
-                android:id="@+id/custom_liste_odenen_ay_sayisi"
-                android:layout_marginTop="5dp"
-                android:textAlignment="viewEnd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textSize="22sp"
-                android:paddingRight="53dp"/>
-
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/btn_tumOdemelerCircleButon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/circle_btn_background"
+                android:src="@drawable/arrowicon"
+                android:tint="@android:color/white"
+                android:textSize="40sp" />
 
 
+        </android.support.v7.widget.CardView>
 
-
-
-    </LinearLayout>
-
+    </GridLayout>
 
 
 

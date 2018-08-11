@@ -4,9 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkGreyim"
     tools:context=".ActivityGunuGelenler">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></include>
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="50dp"
         android:id="@+id/rc_gunuGelenlerListe"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

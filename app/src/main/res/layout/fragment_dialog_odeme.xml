@@ -2,19 +2,23 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/anaBeyaz"
-    android:orientation="vertical">
+    android:background="@color/anaBeyaz2"
+    android:orientation="vertical"
+    android:padding="15dp"
+    >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ödediniz mi?"
         android:textAlignment="center"
+
         android:textSize="25sp"
-        android:paddingTop="20dp"/>
+        android:textStyle="bold"
+        android:paddingTop="15dp"/>
 
     <RelativeLayout
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -23,15 +27,19 @@
             android:id="@+id/fragment_evetButton"
             android:layout_width="80dp"
             android:layout_height="50dp"
+            android:background="@drawable/circle_btn_background"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="25dp"
+            android:textColor="@color/anaBeyaz"
             android:text="Evet"/>
 
         <Button
             android:id="@+id/fragment_hayirButton"
             android:layout_width="80dp"
             android:layout_height="50dp"
+            android:background="@drawable/circle_btn_background"
             android:layout_alignParentEnd="true"
+            android:textColor="@color/anaBeyaz"
             android:layout_alignParentTop="true"
             android:layout_marginRight="25dp"
             android:text="Hayır" />

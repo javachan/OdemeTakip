@@ -6,259 +6,244 @@
     android:layout_height="match_parent"
     tools:context=".ActivityYeniOdeme">
 
-
     <ImageView
         android:id="@+id/iv_yeniOArkaplanImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        />
+        android:scaleType="centerCrop" />
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar"></include>
-    <LinearLayout
-
-        android:layout_marginTop="80dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_below="@id/toolbar"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/ed_yeniOdeme_baslik"
-            android:background="@drawable/form_arka_plan"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Ödeme Başlığı"
-            android:textColor="@color/anaYesil"
-            android:textSize="25sp"
-
-            android:backgroundTint="@color/anaYesil"
-            android:textAlignment="center"/>
-
-
-
-        <View
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="180dp"
-            android:layout_height="1dp"
-            android:outlineAmbientShadowColor="@color/anaYesil"
-            android:background="@color/anaYesil">
-
-        </View>
-
-        <View
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="120dp"
-            android:layout_height="1dp"
-            android:outlineAmbientShadowColor="@color/anaYesil"
-            android:background="@color/anaYesil">
-
-        </View>
-
-        <View
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="60dp"
-            android:layout_height="1dp"
-            android:outlineAmbientShadowColor="@color/anaYesil"
-            android:background="@color/anaYesil">
-
-        </View>
-
-
-
-
-        <TextView
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="22dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="13dp"
-            android:text="Kategori:"/>
-
-
-        <Spinner
-            android:id="@+id/sp_yeniOdeme_kategori"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="20dp"
-
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@color/anaYesil"
-
-            android:dropDownWidth="match_parent"
-            android:entries="@array/kategoriler_array"
-            android:foreground="@drawable/form_arka_plan"></Spinner>
-
-
-
-
-
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></include>
 
 
             <LinearLayout
-                android:gravity="left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_below="@id/toolbar"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/ed_yeniOdeme_baslik"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/form_arka_plan"
+                    android:backgroundTint="@color/anaYesil"
+                    android:hint="Ödeme Başlığı"
+                    android:textAlignment="center"
+
+                    android:textColor="@color/anaYesil"
+                    android:textSize="25sp" />
+
+
+                <View
+                    android:layout_width="180dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/anaYesil"
+                    android:outlineAmbientShadowColor="@color/anaYesil">
+
+                </View>
+
+                <View
+                    android:layout_width="120dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/anaYesil"
+                    android:outlineAmbientShadowColor="@color/anaYesil">
+
+                </View>
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/anaYesil"
+                    android:outlineAmbientShadowColor="@color/anaYesil">
+
+                </View>
 
 
                 <TextView
-
-                    android:layout_marginLeft="22dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13dp"
-                    android:text="Hatırlatma günü:"/>
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="40dp"
+                    android:text="Kategori:"
+                    android:textSize="13dp" />
 
 
                 <Spinner
-                    android:id="@+id/sp_yeniOdeme_gunler"
+                    android:id="@+id/sp_yeniOdeme_kategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
+
                     android:layout_marginRight="20dp"
-                    android:layout_width="120dp"
-
                     android:backgroundTint="@color/anaYesil"
-                    android:foreground="@drawable/form_arka_plan"
 
-                    android:entries="@array/gunler_array"
-                    android:layout_height="45dp">
-
-                </Spinner>
-            </LinearLayout>
+                    android:dropDownWidth="match_parent"
+                    android:entries="@array/kategoriler_array"
+                    android:foreground="@drawable/form_arka_plan"></Spinner>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
 
-                android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="22dp"
+                            android:text="Hatırlatma günü:"
+                            android:textSize="13dp" />
+
+
+                        <Spinner
+                            android:id="@+id/sp_yeniOdeme_gunler"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
+                            android:layout_marginLeft="20dp"
+
+                            android:layout_marginRight="20dp"
+                            android:backgroundTint="@color/anaYesil"
+
+                            android:entries="@array/gunler_array"
+                            android:foreground="@drawable/form_arka_plan">
+
+                        </Spinner>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical">
+
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="40dp"
+                            android:text="Ödenecek Miktar:"
+                            android:textSize="13dp" />
+
+                        <EditText
+                            android:id="@+id/ed_yeniOdeme_odemeMiktar"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="20dp"
+
+                            android:background="@drawable/form_arka_plan"
+                            android:foregroundTint="@color/anaYesil"
+                            android:hint="Tutarı girin"
+                            android:inputType="number"
+
+                            android:textAlignment="center"
+                            android:textColor="@color/anaYesil" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
 
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="40dp"
-                    android:layout_gravity="right"
-                    android:text="Ödenecek Miktar:"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="40dp"
+                    android:text="Taksit Sayısı:"
                     android:textSize="13dp" />
 
-                <EditText
-                    android:id="@+id/ed_yeniOdeme_odemeMiktar"
+                <Spinner
+                    android:id="@+id/sp_yeniOdeme_taksitSayisi"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="20dp"
+
+                    android:layout_marginRight="20dp"
+                    android:backgroundTint="@color/anaYesil"
+
+                    android:dropDownWidth="match_parent"
+                    android:entries="@array/taksitler_array"
+                    android:foreground="@drawable/form_arka_plan"></Spinner>
+
+
+                <Switch
+                    android:id="@+id/sw_yeniOdeme_aylikHatirlansinMi"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="35dp"
+                    android:text="Aylık Hatırlat "
+                    android:textColor="@color/anaYesil"
+                    android:theme="@style/SCBSwitch" />
+
+
+                <Button
+                    android:id="@+id/btn_yeniOdeme_ekleButon"
                     android:layout_width="120dp"
                     android:layout_height="45dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="20dp"
-
-                    android:background="@drawable/form_arka_plan"
-                    android:foregroundTint="@color/anaYesil"
-                    android:hint="Tutarı girin"
-                    android:inputType="number"
-
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="65dp"
+                    android:background="@drawable/yeni_odeme_buton_arkaplan"
+                    android:drawableLeft="@drawable/add_icon"
+                    android:drawableTint="@color/anaYesil"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    android:text="Ekle"
                     android:textAlignment="center"
-                    android:textColor="@color/anaYesil" />
+                    android:textAllCaps="false"
+                    android:textColor="@color/anaYesil"
+                    android:textSize="25sp" />
+
 
             </LinearLayout>
-
-
-
-
-
         </LinearLayout>
-
-
-        <TextView
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="22dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="13dp"
-            android:text="Taksit Sayısı:"/>
-
-        <Spinner
-            android:id="@+id/sp_yeniOdeme_taksitSayisi"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="20dp"
-
-            android:layout_marginRight="20dp"
-            android:backgroundTint="@color/anaYesil"
-
-            android:dropDownWidth="match_parent"
-            android:entries="@array/taksitler_array"
-            android:foreground="@drawable/form_arka_plan"></Spinner>
-
-
-
-
-
-
-
-        <Switch
-            android:id="@+id/sw_yeniOdeme_aylikHatirlansinMi"
-            android:layout_marginLeft="20dp"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:text="Aylık Hatırlat "
-            android:theme="@style/SCBSwitch"
-            android:textColor="@color/anaYesil"/>
-
-
-
-
-        <Button
-            android:id="@+id/btn_yeniOdeme_ekleButon"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/anaYesil"
-            android:layout_marginTop="75dp"
-            android:layout_width="120dp"
-            android:layout_height="45dp"
-            android:textAllCaps="false"
-            android:textAlignment="center"
-            android:paddingLeft="10dp"
-            android:paddingRight="5dp"
-            android:text="Ekle"
-            android:textSize="25sp"
-            android:drawableLeft="@drawable/add_icon"
-            android:drawableTint="@color/anaYesil"
-            android:background="@drawable/yeni_odeme_buton_arkaplan"/>
-
-
-
-
-
-
-
-
-
-
-
-    </LinearLayout>
-
-
-
-
-
+    </ScrollView>
 
 
 </RelativeLayout>

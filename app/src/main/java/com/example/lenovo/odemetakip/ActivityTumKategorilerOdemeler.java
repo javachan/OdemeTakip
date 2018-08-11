@@ -1,13 +1,20 @@
 package com.example.lenovo.odemetakip;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.bumptech.glide.Glide;
 import com.example.lenovo.odemetakip.adapter.AdapterOdemelerListesi;
 import com.example.lenovo.odemetakip.data.Odemeler;
 import com.example.lenovo.odemetakip.data.OdemelerProvider;
@@ -20,11 +27,15 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
     private AdapterOdemelerListesi mAdapterOdemelerListesi;
     private TextView tx_kategoriIsmi;
 
-    String gelenKategori;
+    String gelenKategori = null;
 
     public static final Uri CONTENT_URI= OdemelerProvider.CONTENT_URI;
 
     ArrayList<Odemeler> tumOdemeler=new ArrayList<>();
+
+    private Toolbar mTolbar;
+
+
 
 
 
@@ -35,25 +46,56 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
         setContentView(R.layout.activity_tum_kategoriler_odemeler);
 
 
-        gelenKategori=getIntent().getExtras().getString("OdemeKategoriAdi");
-
-        tx_kategoriIsmi=findViewById(R.id.tumOdemeler_kategoriIsmi);
-        tx_kategoriIsmi.setText(gelenKategori+" Ödemelerim");
+        arkaplaniDegistir();
 
 
-        rv_tumOdemelerRecyclerListe=findViewById(R.id.rv_tum_odemeler_liste);
-
-        LinearLayoutManager manager=new LinearLayoutManager(this);
-
-        rv_tumOdemelerRecyclerListe.setLayoutManager(manager);
-
-        mAdapterOdemelerListesi=new AdapterOdemelerListesi(this,tumOdemeler);
-
-        rv_tumOdemelerRecyclerListe.setAdapter(mAdapterOdemelerListesi);
+        mTolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mTolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
 
 
+        try {
+            gelenKategori = getIntent().getExtras().getString("OdemeKategoriAdi");
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        if (gelenKategori==null) {
 
-        dataGuncelle();//normalde buraya diğer mainden putextra ile aldığımz kategori text ini yollayıp ona göre filtreleme yapıcak
+            //eğer boşsa(detaylıdan geliyorumdur. sağdan sola açılsın ve kategoriyi shared ile alsın.)
+            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            gelenKategori = preferences.getString("gelenKategori","null");
+
+        } else {
+
+            //eğer doluysa mainden geliyorumdur soldan sağa açılsın ve kategoriyi shared ile yazsın.
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences.Editor editor = preferences.edit();
+
+            editor.putString("gelenKategori", gelenKategori);
+            editor.commit();
+        }
+
+
+            tx_kategoriIsmi = findViewById(R.id.tumOdemeler_kategoriIsmi);
+            tx_kategoriIsmi.setText(gelenKategori + " Ödemelerim");
+
+
+            rv_tumOdemelerRecyclerListe = findViewById(R.id.rv_tum_odemeler_liste);
+
+            LinearLayoutManager manager = new LinearLayoutManager(this);
+
+            rv_tumOdemelerRecyclerListe.setLayoutManager(manager);
+
+            mAdapterOdemelerListesi = new AdapterOdemelerListesi(this, tumOdemeler);
+
+            rv_tumOdemelerRecyclerListe.setAdapter(mAdapterOdemelerListesi);
+
+
+            dataGuncelle();//normalde buraya diğer mainden putextra ile aldığımz kategori text ini yollayıp ona göre filtreleme yapıcak
+
 
     }
 
@@ -92,6 +134,15 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
         }
         return tumOdemeler;
     }
+    private void arkaplaniDegistir()
+    {
+        ImageView arkaplanResim=findViewById(R.id.iv_tumKatarkaplanImage);
+        Glide.with(this)
+                .load(R.drawable.yeni_odeme_arkaplan)
+                .into(arkaplanResim);
+    }
+
+
 
 
 

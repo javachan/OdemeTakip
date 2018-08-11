@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#e74b4c4e</color>
     <color name="colorPrimaryDark">#f508444d</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#796811</color>
     <color name="anaYesil">#e2064b54</color>
     <color name="anaBeyaz">#d6ffffff</color>
     <color name="darkBeyaz">#e381ac99</color>
     <color name="yaziYesil">#03be2c</color>
     <color name="yaziKirmizi">#c20c0f</color>
+    <color name="anaBeyaz2">#e3bed1c9</color>
+    <color name="anaYesil2">#a4064b54</color>
+
+    <color name="darkGreyim">#e37b8181</color>
 </resources>

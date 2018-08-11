@@ -34,5 +34,19 @@ public class OdemeTakipContract {
 
 
 
+    //her ödedindi oldgunda bu tabloya eklenecek.
+    //detaylı sayfası 2. fragment de ilgili id ye ait olan ödemeler gelecek sadece listeye.
+    //bu yüzden id primary key olmayacak.
+    public  static final class GecmisOdemeler
+    {
+        public static final String TABLE_NAME="gecmis_odemeler";
+        public static final String _ID="GecmisOdemeId";
+        public static final String COLUMN_ODEME_BASLIK="GecmisOdemeBaslik";
+        public static final String COLUMN_ODEME_ODENEN_TAKSIT_SAYISI="GecmisOdemeOdenenTaksitSayisi";
+        public static final String COLUMN_ODEME_ODEME_TARIHI="GecmisOdemeOdemeTarihi";
+        public static final String COLUMN_ODEME_AYLIK_FIYAT="GecmisOdemeAylikFiyat";
+
+    }
+
 
 }
