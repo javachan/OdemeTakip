@@ -69,7 +69,7 @@ public class ActivityGunuGelenler extends AppCompatActivity {
     private ArrayList<GunuGelenOdemeler> tumGunuGelenOdemeleriGetir()
     {
         //cursor ile tüm günü gelen ödemeler tablosundakileri listeledik.
-        Cursor cursor=getContentResolver().query(CONTENT_URI_GUNU_GELEN_ODEMELER,new String[]{"GunOdemeId,GunOdemeBaslik,GunOdemeOdenenTaksitSayisi,GunOdemeKalanTaksitSayisi,GunOdemeAylikFiyat,GunOdemeOdendimi"},null,null,null);
+        Cursor cursor=getContentResolver().query(CONTENT_URI_GUNU_GELEN_ODEMELER,new String[]{"GunOdemeId,GunOdemeBaslik,GunOdemeOdenenTaksitSayisi,GunOdemeKalanTaksitSayisi,GunOdemeAylikFiyat,GunOdemeOdendimi,GunOdemeParaBirimi"},null,null,null);
 
 
 
@@ -84,6 +84,7 @@ public class ActivityGunuGelenler extends AppCompatActivity {
                 geciciGunuGelenOdeme.setGunOdemeKalanTaksitSayisi(cursor.getInt(cursor.getColumnIndex("GunOdemeKalanTaksitSayisi")));
                 geciciGunuGelenOdeme.setGunOdemeAylikFiyat(cursor.getInt(cursor.getColumnIndex("GunOdemeAylikFiyat")));
                 geciciGunuGelenOdeme.setGunOdemeOdendimi(cursor.getString(cursor.getColumnIndex("GunOdemeOdendimi")));
+                geciciGunuGelenOdeme.setGunOdemeParaBirimi(cursor.getString(cursor.getColumnIndex("GunOdemeParaBirimi")));
 
 
                 tumGunuGelenOdemeler.add(geciciGunuGelenOdeme);

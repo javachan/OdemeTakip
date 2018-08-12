@@ -10,8 +10,9 @@ public class Odemeler {
     private int OdemeAylikFiyat;
     private int OdemeAylikHatirlat;
     private int OdemeHatirlatmaAyGunu;
+    private String OdemeParaBirimi;
 
-    public Odemeler(int odemeId, String odemeBaslik, String odemeKategoriAdi, int odemeOdenenTaksitSayisi, int odemeKalanTaksitSayisi, int odemeAylikFiyat, int odemeAylikHatirlat, int odemeHatirlatmaAyGunu) {
+    public Odemeler(int odemeId, String odemeBaslik, String odemeKategoriAdi, int odemeOdenenTaksitSayisi, int odemeKalanTaksitSayisi, int odemeAylikFiyat, int odemeAylikHatirlat, int odemeHatirlatmaAyGunu,String OdemeParaBirimi) {
         OdemeId = odemeId;
         OdemeBaslik = odemeBaslik;
         OdemeKategoriAdi = odemeKategoriAdi;
@@ -20,6 +21,7 @@ public class Odemeler {
         OdemeAylikFiyat = odemeAylikFiyat;
         OdemeAylikHatirlat = odemeAylikHatirlat;
         OdemeHatirlatmaAyGunu = odemeHatirlatmaAyGunu;
+        this.OdemeParaBirimi=OdemeParaBirimi;
     }
 
 
@@ -94,5 +96,13 @@ public class Odemeler {
 
     public void setOdemeHatirlatmaAyGunu(int odemeHatirlatmaAyGunu) {
         OdemeHatirlatmaAyGunu = odemeHatirlatmaAyGunu;
+    }
+
+    public String getOdemeParaBirimi() {
+        return OdemeParaBirimi;
+    }
+
+    public void setOdemeParaBirimi(String odemeParaBirimi) {
+        OdemeParaBirimi = odemeParaBirimi;
     }
 }

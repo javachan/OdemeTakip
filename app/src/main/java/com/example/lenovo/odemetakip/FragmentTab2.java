@@ -50,7 +50,7 @@ public class FragmentTab2 extends Fragment {
 
 
         //tüm eski ödemeleri aldım. YALNIZCA ID Sİ İLGİLİ ÖDEME OLANIN ESKİ ÖDEME BİLGİLERİNİ GETİRDİM.
-        Cursor cursor=getActivity().getContentResolver().query(CONTENT_URI_GECMIS_ODEMELER,new String[]{"GecmisOdemeId,GecmisOdemeBaslik,GecmisOdemeOdenenTaksitSayisi,GecmisOdemeAylikFiyat,GecmisOdemeOdemeTarihi"},"GecmisOdemeId=?",new String[]{String.valueOf(gelenID)},null);
+        Cursor cursor=getActivity().getContentResolver().query(CONTENT_URI_GECMIS_ODEMELER,new String[]{"GecmisOdemeId,GecmisOdemeBaslik,GecmisOdemeOdenenTaksitSayisi,GecmisOdemeAylikFiyat,GecmisOdemeOdemeTarihi,GecmisOdemeParaBirimi"},"GecmisOdemeId=?",new String[]{String.valueOf(gelenID)},null);
 
 
 
@@ -63,7 +63,7 @@ public class FragmentTab2 extends Fragment {
                 gecmisOdeme.setGecmisOdemeOdenenTaksitSayisi(cursor.getInt(cursor.getColumnIndex("GecmisOdemeOdenenTaksitSayisi")));
                 gecmisOdeme.setGecmisOdemeAylikFiyat(cursor.getInt(cursor.getColumnIndex("GecmisOdemeAylikFiyat")));
                 gecmisOdeme.setGecmisOdemeOdemeTarihi(cursor.getString(cursor.getColumnIndex("GecmisOdemeOdemeTarihi")));
-
+                gecmisOdeme.setGecmisOdemeParaBirimi(cursor.getString(cursor.getColumnIndex("GecmisOdemeParaBirimi")));
 
                 gecmisOdemeler.add(gecmisOdeme);
 

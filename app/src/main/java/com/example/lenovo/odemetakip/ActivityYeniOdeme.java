@@ -29,6 +29,7 @@ public class ActivityYeniOdeme extends AppCompatActivity {
     private Spinner  odemeTaksitSayisi_sp;
     private Switch   odemeAylikHatirlasinMi_sw;
     private Button   yeniOdemeEkleButon;
+    private Spinner  odemeParaBirimi_sp;
 
 
     public static final Uri CONTENT_URI= OdemelerProvider.CONTENT_URI;
@@ -49,7 +50,7 @@ public class ActivityYeniOdeme extends AppCompatActivity {
         odemeTaksitSayisi_sp=findViewById(R.id.sp_yeniOdeme_taksitSayisi);
         odemeAylikHatirlasinMi_sw=findViewById(R.id.sw_yeniOdeme_aylikHatirlansinMi);
         yeniOdemeEkleButon=findViewById(R.id.btn_yeniOdeme_ekleButon);
-
+        odemeParaBirimi_sp=findViewById(R.id.sp_yeniOdeme_paraBirimi);
 
 
 
@@ -94,6 +95,7 @@ public class ActivityYeniOdeme extends AppCompatActivity {
         int hatirlatmaAyGunu=Integer.valueOf(odemeGunler_sp.getSelectedItem().toString());
         int odenecekMiktar=Integer.valueOf(odemeMiktar_ed.getText().toString());
         int taksitSayisi=Integer.valueOf(odemeTaksitSayisi_sp.getSelectedItem().toString());
+        String paraBirimi=odemeParaBirimi_sp.getSelectedItem().toString();
 
 
 
@@ -110,6 +112,7 @@ public class ActivityYeniOdeme extends AppCompatActivity {
         values.put("OdemeAylikFiyat",odenecekMiktar);
         values.put("OdemeAylikHatirlat",hatirlansinMi);
         values.put("OdemeHatirlatmaAyGunu",hatirlatmaAyGunu);
+        values.put("OdemeParaBirimi",paraBirimi);
         //id ve onenenTaksitSayisi n, eklemedik. id oto increment, onenenTaksitSayisi da default 0 old için.
 
 

@@ -73,7 +73,7 @@ public class ActivityGecmisTumOdemeler extends AppCompatActivity {
         ArrayList<GecmisOdemeler> tumEskiOdemeler=new ArrayList<>();
 
         //tüm eski ödemeleri aldım.
-        Cursor cursor=getContentResolver().query(CONTENT_URI_GECMIS_ODEMELER,new String[]{"GecmisOdemeId,GecmisOdemeBaslik,GecmisOdemeOdenenTaksitSayisi,GecmisOdemeAylikFiyat,GecmisOdemeOdemeTarihi"},null,null,null);
+        Cursor cursor=getContentResolver().query(CONTENT_URI_GECMIS_ODEMELER,new String[]{"GecmisOdemeId,GecmisOdemeBaslik,GecmisOdemeOdenenTaksitSayisi,GecmisOdemeAylikFiyat,GecmisOdemeOdemeTarihi,GecmisOdemeParaBirimi"},null,null,null);
 
 
 
@@ -86,7 +86,7 @@ public class ActivityGecmisTumOdemeler extends AppCompatActivity {
                 gecmisOdeme.setGecmisOdemeOdenenTaksitSayisi(cursor.getInt(cursor.getColumnIndex("GecmisOdemeOdenenTaksitSayisi")));
                 gecmisOdeme.setGecmisOdemeAylikFiyat(cursor.getInt(cursor.getColumnIndex("GecmisOdemeAylikFiyat")));
                 gecmisOdeme.setGecmisOdemeOdemeTarihi(cursor.getString(cursor.getColumnIndex("GecmisOdemeOdemeTarihi")));
-
+                gecmisOdeme.setGecmisOdemeParaBirimi(cursor.getString(cursor.getColumnIndex("GecmisOdemeParaBirimi")));
 
                 tumEskiOdemeler.add(gecmisOdeme);
 

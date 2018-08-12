@@ -50,7 +50,7 @@ public class FragmentTab1 extends Fragment {
 
 
         detayliBaslik.setText(putExtrasOdemeler.getOdemeBaslik());
-        detayliMiktar.setText(String.valueOf(putExtrasOdemeler.getOdemeAylikFiyat())+" TL");
+        detayliMiktar.setText(String.valueOf(putExtrasOdemeler.getOdemeAylikFiyat())+" "+putExtrasOdemeler.getOdemeParaBirimi());
         detayliKalanTaksit.setText("Kalan Taksit Sayısı: "+String.valueOf(putExtrasOdemeler.getOdemeKalanTaksitSayisi()));
         detayliOdenenTaksit.setText("Ödenen Taksit Sayısı: "+String.valueOf(putExtrasOdemeler.getOdemeOdenenTaksitSayisi()));
 

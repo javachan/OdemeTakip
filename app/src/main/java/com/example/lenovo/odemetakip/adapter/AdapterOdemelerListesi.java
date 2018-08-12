@@ -78,6 +78,7 @@ public class AdapterOdemelerListesi extends RecyclerView.Adapter<RecyclerView.Vi
                 detayliSonuc.putExtra("OdemeId",String.valueOf(tumOdemeler.get(holder.getAdapterPosition()).getOdemeId()));
                 detayliSonuc.putExtra("OdemeAylikHatirlat",String.valueOf(tumOdemeler.get(holder.getAdapterPosition()).getOdemeAylikHatirlat()));
                 detayliSonuc.putExtra("OdemeHatirlatmaAyGunu",String.valueOf(tumOdemeler.get(holder.getAdapterPosition()).getOdemeHatirlatmaAyGunu()));
+                detayliSonuc.putExtra("OdemeParaBirimi",String.valueOf(tumOdemeler.get(holder.getAdapterPosition()).getOdemeParaBirimi()));
 
 
 

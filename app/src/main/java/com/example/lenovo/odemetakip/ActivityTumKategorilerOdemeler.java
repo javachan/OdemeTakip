@@ -111,7 +111,7 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
     private ArrayList<Odemeler> tumOdemeleriGetir(String gelenKategori)
     {
         //2. yi null geçtik hepsini getir dedik columnların.
-        Cursor cursor=getContentResolver().query(CONTENT_URI,new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu"},"OdemeKategoriAdi=?",new String[]{gelenKategori},null);
+        Cursor cursor=getContentResolver().query(CONTENT_URI,new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu,OdemeParaBirimi"},"OdemeKategoriAdi=?",new String[]{gelenKategori},null);
 
 
 
@@ -127,6 +127,7 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
                 geciciOdeme.setOdemeAylikFiyat(cursor.getInt(cursor.getColumnIndex("OdemeAylikFiyat")));
                 geciciOdeme.setOdemeAylikHatirlat(cursor.getInt(cursor.getColumnIndex("OdemeAylikHatirlat")));
                 geciciOdeme.setOdemeHatirlatmaAyGunu(cursor.getInt(cursor.getColumnIndex("OdemeHatirlatmaAyGunu")));
+                geciciOdeme.setOdemeParaBirimi(cursor.getString(cursor.getColumnIndex("OdemeParaBirimi")));
 
                 tumOdemeler.add(geciciOdeme);
 

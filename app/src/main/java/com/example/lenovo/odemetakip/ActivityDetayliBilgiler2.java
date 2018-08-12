@@ -51,6 +51,7 @@ public class ActivityDetayliBilgiler2 extends AppCompatActivity {
         putExtasOdemeler.setOdemeAylikFiyat(Integer.valueOf(getIntent().getExtras().getString("detayliMiktar")));
         putExtasOdemeler.setOdemeAylikHatirlat(Integer.valueOf(getIntent().getExtras().getString("OdemeAylikHatirlat")));
         putExtasOdemeler.setOdemeHatirlatmaAyGunu(Integer.valueOf(getIntent().getExtras().getString("OdemeHatirlatmaAyGunu")));
+        putExtasOdemeler.setOdemeParaBirimi((getIntent().getExtras().getString("OdemeParaBirimi")));
 
 
         Log.e("put",getIntent().getExtras().getString("detayliBaslik"));

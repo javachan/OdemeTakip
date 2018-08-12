@@ -98,6 +98,7 @@
 
                 <Spinner
                     android:id="@+id/sp_yeniOdeme_kategori"
+                    android:theme="@style/mySpinnerItemStyleKategori"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_marginLeft="20dp"
@@ -110,11 +111,6 @@
                     android:foreground="@drawable/form_arka_plan"></Spinner>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:orientation="horizontal">
 
 
                     <LinearLayout
@@ -125,7 +121,7 @@
 
 
                         <TextView
-
+                            android:layout_marginTop="40dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="22dp"
@@ -138,7 +134,7 @@
                             android:layout_width="120dp"
                             android:layout_height="45dp"
                             android:layout_marginLeft="20dp"
-
+                            android:theme="@style/mySpinnerItemStyleKategori"
                             android:layout_marginRight="20dp"
                             android:backgroundTint="@color/anaYesil"
 
@@ -147,32 +143,35 @@
 
                         </Spinner>
                     </LinearLayout>
+                <TextView
+
+                    android:layout_marginTop="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="20dp"
+                    android:text="Ödenecek Miktar:"
+                    android:textSize="13dp" />
+
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="80dp"
 
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
 
-                        <TextView
 
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:layout_marginRight="40dp"
-                            android:text="Ödenecek Miktar:"
-                            android:textSize="13dp" />
 
                         <EditText
                             android:id="@+id/ed_yeniOdeme_odemeMiktar"
                             android:layout_width="120dp"
                             android:layout_height="45dp"
-                            android:layout_gravity="right"
-                            android:layout_marginRight="20dp"
 
-                            android:autoText="false"
+                            android:layout_marginLeft="20dp"
+
+
                             android:background="@drawable/form_arka_plan"
                             android:foregroundTint="@color/anaYesil"
 
@@ -181,10 +180,27 @@
                             android:textAlignment="center"
                             android:textColor="@color/anaYesil" />
 
+                        <Spinner
+                            android:id="@+id/sp_yeniOdeme_paraBirimi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="45dp"
+                            android:dropDownWidth="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:backgroundTint="@color/anaYesil"
+                            android:theme="@style/mySpinnerItemStyle"
+                            android:clickable="true"
+                            android:entries="@array/para_birimleri_array"
+                            android:foreground="@drawable/form_arka_plan">
+
+                        </Spinner>
+
+
+
                     </LinearLayout>
 
 
-                </LinearLayout>
+
 
 
                 <TextView
@@ -203,7 +219,7 @@
 
                     android:layout_marginRight="20dp"
                     android:backgroundTint="@color/anaYesil"
-
+                    android:theme="@style/mySpinnerItemStyleKategori"
                     android:dropDownWidth="match_parent"
                     android:entries="@array/taksitler_array"
                     android:foreground="@drawable/form_arka_plan"></Spinner>

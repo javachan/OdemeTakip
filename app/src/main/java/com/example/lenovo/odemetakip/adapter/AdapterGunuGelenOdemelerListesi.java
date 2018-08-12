@@ -91,7 +91,7 @@ public class AdapterGunuGelenOdemelerListesi extends RecyclerView.Adapter<Recycl
 
 
             gunuGelenOdemeHolder.mTextGunuGelenOdemeBaslik.setText(tumGunuGelenOdemeler.get(i).getGunOdemeBaslik());
-            gunuGelenOdemeHolder.mTextGunuGelenOdemeMiktar.setText(String.valueOf(tumGunuGelenOdemeler.get(i).getGunOdemeAylikFiyat()));
+            gunuGelenOdemeHolder.mTextGunuGelenOdemeMiktar.setText(String.valueOf(tumGunuGelenOdemeler.get(i).getGunOdemeAylikFiyat()+" "+tumGunuGelenOdemeler.get(i).getGunOdemeParaBirimi()));
             gunuGelenOdemeHolder.mTextGunuGelenKalanAySayisi.setText(String.valueOf(tumGunuGelenOdemeler.get(i).getGunOdemeKalanTaksitSayisi()));
             gunuGelenOdemeHolder.mTextGunuGelenOdenenAySayisi.setText(String.valueOf(tumGunuGelenOdemeler.get(i).getGunOdemeOdenenTaksitSayisi()));
             gunuGelenOdemeHolder.mTextGunuGelenOdendiMiBilgisi.setText(String.valueOf(tumGunuGelenOdemeler.get(i).getGunOdemeOdendimi()));

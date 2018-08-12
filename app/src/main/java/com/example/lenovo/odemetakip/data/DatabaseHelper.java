@@ -10,11 +10,12 @@ import com.example.lenovo.odemetakip.data.OdemeTakipContract.GecmisOdemeler;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME="odemetakip.db";
-    private static final int DATABASE_VERSION=3;
+    private static final int DATABASE_VERSION=6;
     private static final String TABLE_ODEMELER_CREATE=
             "create table "+Odemeler.TABLE_NAME+"("+Odemeler._ID+" integer PRIMARY KEY AUTOINCREMENT,"+Odemeler.COLUMN_ODEME_BASLIK+
              " text,"+Odemeler.COLUMN_ODEME_KATEGORI_ADI+" text,"+Odemeler.COLUMN_ODEME_ODENEN_TAKSIT_SAYISI+" integer default 0,"+Odemeler.COLUMN_ODEME_KALAN_TAKSIT_SAYISI+
-                    " integer,"+Odemeler.COLUMN_ODEME_AYLIK_FIYAT+" integer,"+Odemeler.COLUMN_ODEME_AYLIK_HATIRLAT+" integer,"+Odemeler.COLUMN_ODEME_HATIRLATMA_AY_GUNU+" integer)";
+                    " integer,"+Odemeler.COLUMN_ODEME_AYLIK_FIYAT+" integer,"+Odemeler.COLUMN_ODEME_AYLIK_HATIRLAT+" integer,"+Odemeler.COLUMN_ODEME_HATIRLATMA_AY_GUNU+
+                    " integer, "+Odemeler.COLUMN_ODEME_PARA_BIRIMI+" text)";
 
 
 
@@ -23,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "create table "+GunuGelenOdemeler.TABLE_NAME+"("+GunuGelenOdemeler._ID+" integer PRIMARY KEY,"+GunuGelenOdemeler.COLUMN_ODEME_BASLIK+
                     " text, "+GunuGelenOdemeler.COLUMN_ODEME_ODENEN_TAKSIT_SAYISI+" integer default 0,"+GunuGelenOdemeler.COLUMN_ODEME_KALAN_TAKSIT_SAYISI+
                     " integer,"+GunuGelenOdemeler.COLUMN_ODEME_AYLIK_FIYAT+" integer," +GunuGelenOdemeler.COLUMN_ODEME_ODENDIMI+
-                    " text default 'Ödenmedi')";
+                    " text default 'Ödenmedi', "+GunuGelenOdemeler.COLUMN_ODEME_PARA_BIRIMI+" text)";
 
 
 
@@ -31,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_GECMIS_ODEMELER_CREATE=
             "create table "+GecmisOdemeler.TABLE_NAME+"("+GecmisOdemeler._ID+" integer,"+GecmisOdemeler.COLUMN_ODEME_BASLIK+
                     " text, "+GecmisOdemeler.COLUMN_ODEME_ODENEN_TAKSIT_SAYISI+" integer,"+GecmisOdemeler.COLUMN_ODEME_ODEME_TARIHI+
-                    " text,"+GecmisOdemeler.COLUMN_ODEME_AYLIK_FIYAT+" integer)";
+                    " text,"+GecmisOdemeler.COLUMN_ODEME_AYLIK_FIYAT+" integer, "+GecmisOdemeler.COLUMN_ODEME_PARA_BIRIMI+" text)";
 
 
 

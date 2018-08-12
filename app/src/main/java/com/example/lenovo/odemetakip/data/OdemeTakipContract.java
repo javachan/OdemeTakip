@@ -17,7 +17,7 @@ public class OdemeTakipContract {
         public static final String COLUMN_ODEME_AYLIK_FIYAT="OdemeAylikFiyat";
         public static final String COLUMN_ODEME_AYLIK_HATIRLAT="OdemeAylikHatirlat";
         public static final String COLUMN_ODEME_HATIRLATMA_AY_GUNU="OdemeHatirlatmaAyGunu";
-
+        public static final String COLUMN_ODEME_PARA_BIRIMI="OdemeParaBirimi";
     }
 
     public  static final class GunuGelenOdemeler
@@ -29,6 +29,7 @@ public class OdemeTakipContract {
         public static final String COLUMN_ODEME_KALAN_TAKSIT_SAYISI="GunOdemeKalanTaksitSayisi";
         public static final String COLUMN_ODEME_AYLIK_FIYAT="GunOdemeAylikFiyat";
         public static final String COLUMN_ODEME_ODENDIMI="GunOdemeOdendimi";
+        public static final String COLUMN_ODEME_PARA_BIRIMI="GunOdemeParaBirimi";
     }
 
 
@@ -45,6 +46,7 @@ public class OdemeTakipContract {
         public static final String COLUMN_ODEME_ODENEN_TAKSIT_SAYISI="GecmisOdemeOdenenTaksitSayisi";
         public static final String COLUMN_ODEME_ODEME_TARIHI="GecmisOdemeOdemeTarihi";
         public static final String COLUMN_ODEME_AYLIK_FIYAT="GecmisOdemeAylikFiyat";
+        public static final String COLUMN_ODEME_PARA_BIRIMI="GecmisOdemeParaBirimi";
 
     }
 

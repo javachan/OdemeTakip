@@ -115,16 +115,16 @@ public class BildirimServisi extends IntentService {
                     {
                         //ödenmedi ise bildirim yollasın.
                         Log.e("odenmedi",geciciOdeme.getOdemeBaslik());
-                        bildirimYolla(geciciOdeme.getOdemeId(),geciciOdeme.getOdemeBaslik(),geciciOdeme.getOdemeAylikFiyat(),(geciciOdeme.getOdemeOdenenTaksitSayisi()+1));
+                        bildirimYolla(geciciOdeme.getOdemeId(),geciciOdeme.getOdemeBaslik(),geciciOdeme.getOdemeAylikFiyat(),(geciciOdeme.getOdemeOdenenTaksitSayisi()+1),geciciOdeme.getOdemeParaBirimi());
                     }
 
                 }
                 else
                 {
                     Log.e("yok",geciciOdeme.getOdemeBaslik());
-                    bildirimYolla(geciciOdeme.getOdemeId(),geciciOdeme.getOdemeBaslik(),geciciOdeme.getOdemeAylikFiyat(),(geciciOdeme.getOdemeOdenenTaksitSayisi()+1));
+                    bildirimYolla(geciciOdeme.getOdemeId(),geciciOdeme.getOdemeBaslik(),geciciOdeme.getOdemeAylikFiyat(),(geciciOdeme.getOdemeOdenenTaksitSayisi()+1),geciciOdeme.getOdemeParaBirimi());
                     //yoksa gunu gelenlere ekle ve bildirim gönder.
-                    gunuGelenlereEkle(geciciOdeme.getOdemeId(),geciciOdeme.getOdemeBaslik(),geciciOdeme.getOdemeOdenenTaksitSayisi(),geciciOdeme.getOdemeKalanTaksitSayisi(),geciciOdeme.getOdemeAylikFiyat());
+                    gunuGelenlereEkle(geciciOdeme.getOdemeId(),geciciOdeme.getOdemeBaslik(),geciciOdeme.getOdemeOdenenTaksitSayisi(),geciciOdeme.getOdemeKalanTaksitSayisi(),geciciOdeme.getOdemeAylikFiyat(),geciciOdeme.getOdemeParaBirimi());
                 }
 
 
@@ -163,7 +163,7 @@ public class BildirimServisi extends IntentService {
         return false;
     }
 
-    private void gunuGelenlereEkle(int odemeId, String odemeBaslik, int odemeOdenenTaksitSayisi, int odemeKalanTaksitSayisi, int odemeAylikFiyat)
+    private void gunuGelenlereEkle(int odemeId, String odemeBaslik, int odemeOdenenTaksitSayisi, int odemeKalanTaksitSayisi, int odemeAylikFiyat,String paraBirimi)
     {
 
         ContentValues values=new ContentValues();
@@ -172,7 +172,7 @@ public class BildirimServisi extends IntentService {
         values.put("GunOdemeOdenenTaksitSayisi",odemeOdenenTaksitSayisi);
         values.put("GunOdemeKalanTaksitSayisi",odemeKalanTaksitSayisi);
         values.put("GunOdemeAylikFiyat",odemeAylikFiyat);
-
+        values.put("GunOdemeParaBirimi",paraBirimi);
 
 
 
@@ -212,7 +212,7 @@ public class BildirimServisi extends IntentService {
     }
 
 
-    private void bildirimYolla(int id,String baslik, int fiyat, int odenecekAy)
+    private void bildirimYolla(int id,String baslik, int fiyat, int odenecekAy,String paraBirimi)
     {
 
 
@@ -239,7 +239,7 @@ public class BildirimServisi extends IntentService {
 
         PendingIntent bildirimIntent=PendingIntent.getActivity(this,10,pendingIntent,PendingIntent.FLAG_UPDATE_CURRENT);
 
-            String message="Aman unutayım deme, bugün "+baslik+" isimli ödemenin "+odenecekAy+". taksitini ödeyeceksin. Ödeyeceğin tutar : "+fiyat+" Hadi görüşürüz bu kıyağımı da unutma :)";
+            String message="Aman unutayım deme, bugün "+baslik+" isimli ödemenin "+odenecekAy+". taksitini ödeyeceksin. Ödeyeceğin tutar : "+fiyat+" "+paraBirimi+" Hadi görüşürüz bu kıyağımı da unutma :)";
 
         @SuppressLint("ResourceAsColor") Notification builder=new NotificationCompat.Builder(this,"Yeni mesaj")
        .setSmallIcon(R.drawable.iconum)
@@ -298,7 +298,7 @@ public class BildirimServisi extends IntentService {
 
         //2. yi null geçtik hepsini getir dedik columnların.
         Cursor cursor = getContentResolver()
-                .query(CONTENT_URI, new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu"}, "OdemeAylikHatirlat=?", new String[]{"1"}, null);
+                .query(CONTENT_URI, new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu,OdemeParaBirimi"}, "OdemeAylikHatirlat=?", new String[]{"1"}, null);
 
 
         if (cursor != null) {
@@ -313,7 +313,7 @@ public class BildirimServisi extends IntentService {
                 geciciOdeme.setOdemeAylikFiyat(cursor.getInt(cursor.getColumnIndex("OdemeAylikFiyat")));
                 geciciOdeme.setOdemeAylikHatirlat(cursor.getInt(cursor.getColumnIndex("OdemeAylikHatirlat")));
                 geciciOdeme.setOdemeHatirlatmaAyGunu(cursor.getInt(cursor.getColumnIndex("OdemeHatirlatmaAyGunu")));
-
+                geciciOdeme.setOdemeParaBirimi(cursor.getString(cursor.getColumnIndex("OdemeParaBirimi")));
                 odenmesiGerekenler.add(geciciOdeme);
 
 

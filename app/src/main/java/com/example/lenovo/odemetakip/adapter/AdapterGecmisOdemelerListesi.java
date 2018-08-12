@@ -56,7 +56,7 @@ public class AdapterGecmisOdemelerListesi  extends RecyclerView.Adapter<Recycler
             gecmisOdemeHolder.mTextGecmisOdemeBaslik.setText(tumGecmisOdemeler.get(i).getGecmisOdemeBaslik());
             gecmisOdemeHolder.mTextGecmisOdemeTarih.setText(String.valueOf(tumGecmisOdemeler.get(i).getGecmisOdemeOdemeTarihi()));
             gecmisOdemeHolder.mTextGecmisOdemeAciklama.setText(String.valueOf(tumGecmisOdemeler.get(i).getGecmisOdemeOdenenTaksitSayisi()+
-            ". Taksit "+tumGecmisOdemeler.get(i).getGecmisOdemeAylikFiyat()+" TL olarak ödenmiştir."));
+            ". Taksit "+tumGecmisOdemeler.get(i).getGecmisOdemeAylikFiyat()+" "+tumGecmisOdemeler.get(i).getGecmisOdemeParaBirimi()+" olarak ödenmiştir."));
 
 
 

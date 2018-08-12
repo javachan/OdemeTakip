@@ -155,6 +155,7 @@ public class FragmentDialogOdeme  extends DialogFragment
         values.put("GecmisOdemeBaslik",anaVeriler.getOdemeBaslik());
         values.put("GecmisOdemeOdenenTaksitSayisi",String.valueOf(anaVeriler.getOdemeOdenenTaksitSayisi()+1));
         values.put("GecmisOdemeAylikFiyat",String.valueOf(anaVeriler.getOdemeAylikFiyat()));
+        values.put("GecmisOdemeParaBirimi",anaVeriler.getOdemeParaBirimi());
 
         Date simdi=new Date();
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("EEE, d MMM, k:mm");
@@ -186,7 +187,7 @@ public class FragmentDialogOdeme  extends DialogFragment
     private Odemeler odemelerTablosundakiVerileriGetir(int guncellenecekID)
     {
         //2. yi null geçtik hepsini getir dedik columnların.
-        Cursor cursor=getActivity().getContentResolver().query(CONTENT_URI,new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu"},"OdemeId=?",new String[]{String.valueOf(guncellenecekID)},null);
+        Cursor cursor=getActivity().getContentResolver().query(CONTENT_URI,new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu,OdemeParaBirimi"},"OdemeId=?",new String[]{String.valueOf(guncellenecekID)},null);
 
         Odemeler geciciOdeme = new Odemeler();
 
@@ -202,6 +203,7 @@ public class FragmentDialogOdeme  extends DialogFragment
                 geciciOdeme.setOdemeAylikFiyat(cursor.getInt(cursor.getColumnIndex("OdemeAylikFiyat")));
                 geciciOdeme.setOdemeAylikHatirlat(cursor.getInt(cursor.getColumnIndex("OdemeAylikHatirlat")));
                 geciciOdeme.setOdemeHatirlatmaAyGunu(cursor.getInt(cursor.getColumnIndex("OdemeHatirlatmaAyGunu")));
+                geciciOdeme.setOdemeParaBirimi(cursor.getString(cursor.getColumnIndex("OdemeParaBirimi")));
 
 
 

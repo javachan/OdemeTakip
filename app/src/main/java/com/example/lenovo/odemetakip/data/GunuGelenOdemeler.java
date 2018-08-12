@@ -7,6 +7,7 @@ public class GunuGelenOdemeler {
     private int GunOdemeKalanTaksitSayisi;
     private int GunOdemeAylikFiyat;
     private String GunOdemeOdendimi;
+    private String GunOdemeParaBirimi;
 
 
     public GunuGelenOdemeler()
@@ -14,13 +15,14 @@ public class GunuGelenOdemeler {
 
     }
 
-    public GunuGelenOdemeler(int gunOdemeId, String gunOdemeBaslik, int gunOdemeOdenenTaksitSayisi, int gunOdemeKalanTaksitSayisi, int gunOdemeAylikFiyat,String GunOdemeOdendimi) {
+    public GunuGelenOdemeler(int gunOdemeId, String gunOdemeBaslik, int gunOdemeOdenenTaksitSayisi, int gunOdemeKalanTaksitSayisi, int gunOdemeAylikFiyat,String GunOdemeOdendimi,String GunOdemeParaBirimi) {
         GunOdemeId = gunOdemeId;
         GunOdemeBaslik = gunOdemeBaslik;
         GunOdemeOdenenTaksitSayisi = gunOdemeOdenenTaksitSayisi;
         GunOdemeKalanTaksitSayisi = gunOdemeKalanTaksitSayisi;
         GunOdemeAylikFiyat = gunOdemeAylikFiyat;
         this.GunOdemeOdendimi=GunOdemeOdendimi;
+        this.GunOdemeParaBirimi=GunOdemeParaBirimi;
     }
 
     public int getGunOdemeId() {
@@ -69,5 +71,13 @@ public class GunuGelenOdemeler {
 
     public void setGunOdemeOdendimi(String gunOdemeOdendimi) {
         GunOdemeOdendimi = gunOdemeOdendimi;
+    }
+
+    public String getGunOdemeParaBirimi() {
+        return GunOdemeParaBirimi;
+    }
+
+    public void setGunOdemeParaBirimi(String gunOdemeParaBirimi) {
+        GunOdemeParaBirimi = gunOdemeParaBirimi;
     }
 }

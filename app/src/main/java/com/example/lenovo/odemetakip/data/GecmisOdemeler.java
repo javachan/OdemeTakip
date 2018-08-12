@@ -7,19 +7,20 @@ public class GecmisOdemeler {
     private int GecmisOdemeOdenenTaksitSayisi;
     private int GecmisOdemeAylikFiyat;
     private String  GecmisOdemeOdemeTarihi;
-
+    private String  GecmisOdemeParaBirimi;
 
     public GecmisOdemeler()
     {
 
     }
 
-    public GecmisOdemeler(String odemeTarihi,int gecmisOdemeId, String gecmisOdemeBaslik, int gecmisOdemeOdenenTaksitSayisi, int gecmisOdemeAylikFiyat) {
+    public GecmisOdemeler(String odemeTarihi,int gecmisOdemeId, String gecmisOdemeBaslik, int gecmisOdemeOdenenTaksitSayisi, int gecmisOdemeAylikFiyat, String GecmisOdemeParaBirimi) {
         GecmisOdemeId = gecmisOdemeId;
         GecmisOdemeBaslik = gecmisOdemeBaslik;
         GecmisOdemeOdenenTaksitSayisi = gecmisOdemeOdenenTaksitSayisi;
         GecmisOdemeAylikFiyat = gecmisOdemeAylikFiyat;
         this.GecmisOdemeOdemeTarihi=odemeTarihi;
+        this.GecmisOdemeParaBirimi=GecmisOdemeParaBirimi;
     }
 
     public String getGecmisOdemeOdemeTarihi() {
@@ -60,5 +61,13 @@ public class GecmisOdemeler {
 
     public void setGecmisOdemeAylikFiyat(int gecmisOdemeAylikFiyat) {
         GecmisOdemeAylikFiyat = gecmisOdemeAylikFiyat;
+    }
+
+    public String getGecmisOdemeParaBirimi() {
+        return GecmisOdemeParaBirimi;
+    }
+
+    public void setGecmisOdemeParaBirimi(String gecmisOdemeParaBirimi) {
+        GecmisOdemeParaBirimi = gecmisOdemeParaBirimi;
     }
 }
