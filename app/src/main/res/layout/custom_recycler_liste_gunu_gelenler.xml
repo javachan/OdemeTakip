@@ -34,9 +34,10 @@
 
             <LinearLayout
                 android:id="@+id/tiklanacakListem"
-                android:layout_marginTop="5dp"
+                android:paddingTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/darkBeyaz3"
                 android:orientation="vertical">
 
 
@@ -48,6 +49,7 @@
                     android:layout_marginTop="5dp"
                     android:text="Ödeme başlığı"
                     android:textAlignment="center"
+                    android:textColor="@color/darkBeyaz"
                     android:textSize="30sp" />
 
 
@@ -55,6 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:textColor="@color/darkBeyaz"
                     android:text="Aylık Ödenen Miktar:"
                     android:textAlignment="center"
                     android:textSize="13sp" />
@@ -63,7 +66,7 @@
                     android:id="@+id/custom_liste2_aylik_odeme_miktar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:textColor="@color/darkBeyaz"
                     android:text="750 TL"
                     android:textAlignment="center"
                     android:textSize="22sp" />
@@ -86,7 +89,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
+                            android:textColor="@color/darkBeyaz"
                             android:text="Kalan Ay"
                             android:textAlignment="center"
                             android:textSize="13sp" />
@@ -95,7 +98,7 @@
                             android:id="@+id/custom_liste2_kalan_ay_sayisi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
+                            android:textColor="@color/darkBeyaz"
                             android:text="11"
                             android:textAlignment="center"
                             android:textSize="22sp" />
@@ -111,6 +114,7 @@
                         >
 
                         <TextView
+                            android:textColor="@color/darkBeyaz"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="1dp"
@@ -120,6 +124,7 @@
                             android:textSize="13sp" />
 
                         <TextView
+                            android:textColor="@color/darkBeyaz"
                             android:id="@+id/custom_liste2_odenen_ay_sayisi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

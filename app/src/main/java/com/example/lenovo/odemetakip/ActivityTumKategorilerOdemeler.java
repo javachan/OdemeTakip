@@ -46,7 +46,7 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
         setContentView(R.layout.activity_tum_kategoriler_odemeler);
 
 
-        arkaplaniDegistir();
+
 
 
         mTolbar = findViewById(R.id.toolbar);
@@ -80,7 +80,7 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
 
 
             tx_kategoriIsmi = findViewById(R.id.tumOdemeler_kategoriIsmi);
-            tx_kategoriIsmi.setText(gelenKategori + " Ödemelerim");
+            tx_kategoriIsmi.setText(gelenKategori);
 
 
             rv_tumOdemelerRecyclerListe = findViewById(R.id.rv_tum_odemeler_liste);
@@ -134,13 +134,7 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
         }
         return tumOdemeler;
     }
-    private void arkaplaniDegistir()
-    {
-        ImageView arkaplanResim=findViewById(R.id.iv_tumKatarkaplanImage);
-        Glide.with(this)
-                .load(R.drawable.yeni_odeme_arkaplan)
-                .into(arkaplanResim);
-    }
+
 
 
 

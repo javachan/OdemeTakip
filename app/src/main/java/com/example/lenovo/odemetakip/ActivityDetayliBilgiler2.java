@@ -1,5 +1,6 @@
 package com.example.lenovo.odemetakip;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,11 +16,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lenovo.odemetakip.data.Odemeler;
 
@@ -156,7 +159,7 @@ public class ActivityDetayliBilgiler2 extends AppCompatActivity {
                     FragmentTab1 fragmentTab1=new FragmentTab1(putExtasOdemeler);
                     return fragmentTab1;
                 case 1:
-                    FragmentTab2 fragmentTab2=new FragmentTab2();
+                    FragmentTab2 fragmentTab2=new FragmentTab2((putExtasOdemeler.getOdemeId()));
                     return fragmentTab2;
                 default:return null;
             }
@@ -170,4 +173,31 @@ public class ActivityDetayliBilgiler2 extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.fragment_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.item1_bilgileri_guncelle:
+            {
+                Toast.makeText(this, "Güncelle sayfası yakında!", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            case R.id.item2_anaSayfa:
+            {
+                Intent anaSayfaIntent=new Intent(ActivityDetayliBilgiler2.this,ActivityMain.class);
+                startActivity(anaSayfaIntent);
+                finish();
+                return true;
+            }
+            default: return super.onOptionsItemSelected(item);
+        }
+
+    }
 }

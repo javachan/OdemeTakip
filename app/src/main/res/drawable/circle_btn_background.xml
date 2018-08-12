@@ -2,6 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <corners android:radius="1000dp"></corners>
-    <solid android:color="@color/anaYesil"></solid>
+    <solid android:color="@android:color/transparent"></solid>
+    <stroke android:color="@color/anaBeyaz2" android:width="3dp"></stroke>
 
 </shape>

@@ -4,9 +4,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.example.lenovo.odemetakip.adapter.AdapterGecmisOdemelerListesi;
 import com.example.lenovo.odemetakip.data.GecmisOdemeler;
 import com.example.lenovo.odemetakip.data.OdemelerProvider;
 
@@ -15,10 +18,12 @@ import java.util.ArrayList;
 public class ActivityGecmisTumOdemeler extends AppCompatActivity {
 
     static final Uri CONTENT_URI_GECMIS_ODEMELER= OdemelerProvider.CONTENT_URI_GECMIS_ODEMELER; //ana linki aldık.
+    private RecyclerView rv_gecmisOdemelerRecycListe;
+    private AdapterGecmisOdemelerListesi mAdapterGecmisOdemelerListesi;
 
-    private TextView gecmisTxtDeneme;
-    private ArrayList<GecmisOdemeler> tumGecmisOdemeler;
+    private ArrayList<GecmisOdemeler> tumGecmisOdemeler=new ArrayList<>();
     private Toolbar mTolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +39,33 @@ public class ActivityGecmisTumOdemeler extends AppCompatActivity {
 
 
 
-        gecmisTxtDeneme=findViewById(R.id.txt_deneme_gecmis);
 
+        rv_gecmisOdemelerRecycListe=findViewById(R.id.rc_gecmis_odemeler_Liste);
+        LinearLayoutManager manager=new LinearLayoutManager(this);
+
+        rv_gecmisOdemelerRecycListe.setLayoutManager(manager);
+        mAdapterGecmisOdemelerListesi=new AdapterGecmisOdemelerListesi(this,tumGecmisOdemeler);
+
+        rv_gecmisOdemelerRecycListe.setAdapter(mAdapterGecmisOdemelerListesi);
+
+        dataGuncelle();
+
+
+
+
+
+
+
+
+
+    }
+
+
+    public void dataGuncelle()
+    {
+        tumGecmisOdemeler.clear();
         tumGecmisOdemeler=tumGecmisOdemeleriGetir();
-
-        for(int i=0;i<tumGecmisOdemeler.size();i++) {
-            gecmisTxtDeneme.setText(tumGecmisOdemeler.get(i).getGecmisOdemeBaslik()+" nın \n"+
-            tumGecmisOdemeler.get(i).getGecmisOdemeOdenenTaksitSayisi()+". taksiti "+
-            tumGecmisOdemeler.get(i).getGecmisOdemeOdemeTarihi()+" tarihinde ödenmiştir.");
-        }
-
+        mAdapterGecmisOdemelerListesi.update(tumGecmisOdemeler);
     }
 
     private ArrayList<GecmisOdemeler> tumGecmisOdemeleriGetir()

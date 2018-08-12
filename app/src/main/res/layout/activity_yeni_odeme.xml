@@ -172,11 +172,12 @@
                             android:layout_gravity="right"
                             android:layout_marginRight="20dp"
 
+                            android:autoText="false"
                             android:background="@drawable/form_arka_plan"
                             android:foregroundTint="@color/anaYesil"
+
                             android:hint="Tutarı girin"
                             android:inputType="number"
-
                             android:textAlignment="center"
                             android:textColor="@color/anaYesil" />
 

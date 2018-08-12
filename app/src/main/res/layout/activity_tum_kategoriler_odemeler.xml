@@ -6,34 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ActivityTumKategorilerOdemeler"
     android:orientation="vertical"
-    android:background="@color/anaYesil2">
+    android:background="@color/darkBeyaz">
 
-    <ImageView
-        android:id="@+id/iv_tumKatarkaplanImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        />
+
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></include>
+        android:layout_height="40dp"></include>
 
-    
+
     <TextView
-        android:layout_below="@id/toolbar"
-
-        android:layout_marginBottom="45dp"
         android:id="@+id/tumOdemeler_kategoriIsmi"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
 
-        android:textSize="35sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginBottom="15dp"
+
+        android:fontFamily="sans-serif-smallcaps"
+
+        android:textAllCaps="false"
+        android:text="Deneme ödemerim"
         android:textAlignment="center"
-        android:textColor="@color/anaBeyaz"
-        />
+        android:textColor="@color/anaBeyaz2"
+        android:textSize="35sp" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_below="@id/tumOdemeler_kategoriIsmi"

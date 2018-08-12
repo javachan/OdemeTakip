@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.app.PendingIntent;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import com.example.lenovo.odemetakip.data.Odemeler;
 import com.example.lenovo.odemetakip.data.OdemelerProvider;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class AdapterOdemelerListesi extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -115,6 +118,11 @@ public class AdapterOdemelerListesi extends RecyclerView.Adapter<RecyclerView.Vi
             OdemeHolder odemetHolder= (OdemeHolder) holder;
             odemetHolder.mTextOdemeBaslik.setText(tumOdemeler.get(i).getOdemeBaslik());
 
+            Random random = new Random();
+
+            int color = Color.argb(200, random.nextInt(156), random.nextInt(156), random.nextInt(156));
+            odemetHolder.mCustom_tum_verilerListe.setBackgroundColor(color);
+
         }
 
 
@@ -167,12 +175,14 @@ public class AdapterOdemelerListesi extends RecyclerView.Adapter<RecyclerView.Vi
         TextView mTextOdemeBaslik;
         ImageButton mTextCircleButton;
 
+        LinearLayout mCustom_tum_verilerListe;
+
 
         public OdemeHolder(@NonNull View itemView) {
             super(itemView);
             mTextOdemeBaslik=itemView.findViewById(R.id.tx_tumOdemelerBaslik);
             mTextCircleButton=itemView.findViewById(R.id.btn_tumOdemelerCircleButon);
-
+            mCustom_tum_verilerListe=itemView.findViewById(R.id.custom_tum_verilerListe);
         }
     }
 

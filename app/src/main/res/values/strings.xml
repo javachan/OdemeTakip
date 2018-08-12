@@ -59,10 +59,19 @@
         <item>31</item>
     </string-array>
     <string name="title_activity_detayli_bilgiler2">ActivityDetayliBilgiler2</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
+
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string-array name="para_birimleri_array">
+        <item>₺</item>
+        <item>$</item>
+        <item>€</item>
+        <item>£</item>
+        <item>฿</item>
+
+    </string-array>
+
 
 </resources>
