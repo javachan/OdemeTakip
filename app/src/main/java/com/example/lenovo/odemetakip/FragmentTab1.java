@@ -51,17 +51,31 @@ public class FragmentTab1 extends Fragment {
 
         detayliBaslik.setText(putExtrasOdemeler.getOdemeBaslik());
         detayliMiktar.setText(String.valueOf(putExtrasOdemeler.getOdemeAylikFiyat())+" "+putExtrasOdemeler.getOdemeParaBirimi());
-        detayliKalanTaksit.setText("Kalan Taksit Sayısı: "+String.valueOf(putExtrasOdemeler.getOdemeKalanTaksitSayisi()));
-        detayliOdenenTaksit.setText("Ödenen Taksit Sayısı: "+String.valueOf(putExtrasOdemeler.getOdemeOdenenTaksitSayisi()));
+        detayliKalanTaksit.setText("Kalan Taksit Sayısı : "+String.valueOf(putExtrasOdemeler.getOdemeKalanTaksitSayisi()));
+        detayliOdenenTaksit.setText("Ödenen Taksit Sayısı : "+String.valueOf(putExtrasOdemeler.getOdemeOdenenTaksitSayisi()));
 
         String hatirlatma="Kapalı";
         if(putExtrasOdemeler.getOdemeAylikHatirlat()==1)
         {
             hatirlatma="Açık";
         }
-        detayliHatirlatilsinMi.setText("Aylık Hatırlatma:"+hatirlatma);
-        detayliHatirlatmaGun.setText("Ödeme her ayın"+String.valueOf(putExtrasOdemeler.getOdemeHatirlatmaAyGunu()+". günüdür." ));
+        detayliHatirlatilsinMi.setText("Aylık Hatırlatma : "+hatirlatma);
+        detayliHatirlatmaGun.setText("Ödeme her ayın "+String.valueOf(putExtrasOdemeler.getOdemeHatirlatmaAyGunu()+". günüdür." ));
 
 
+    }
+
+
+    public void veriAnlıkGuncelle(int hatirlansinMi, String odemeBasligi, String kategori, int hatirlatmaAyGunu, int odenecekMiktar, int taksitSayisi, String paraBirimi)
+    {
+        String hatirlatma="Kapalı";
+
+        detayliBaslik.setText(odemeBasligi);
+        detayliMiktar.setText(paraBirimi);
+        detayliKalanTaksit.setText("Kalan Taksit Sayısı : "+String.valueOf(odenecekMiktar));
+        if(hatirlansinMi==1)
+            hatirlatma="Açık";
+        detayliHatirlatilsinMi.setText("Aylık Hatırlatma : "+hatirlatma);
+        detayliHatirlatmaGun.setText("Ödeme her ayın "+String.valueOf(hatirlatmaAyGunu+". günüdür." ));
     }
 }

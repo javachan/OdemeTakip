@@ -102,9 +102,17 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
 
     public void dataGuncelle()
     {
-        tumOdemeler.clear();
-        tumOdemeler=tumOdemeleriGetir(gelenKategori);
-        mAdapterOdemelerListesi.update(tumOdemeler);
+        if(gelenKategori.equals("Bitenler"))
+        {
+            tumOdemeler.clear();
+            tumOdemeler=tumBitenOdemeleriGetir();
+            mAdapterOdemelerListesi.update(tumOdemeler);
+        }
+        else {
+            tumOdemeler.clear();
+            tumOdemeler = tumOdemeleriGetir(gelenKategori);
+            mAdapterOdemelerListesi.update(tumOdemeler);
+        }
 
     }
 
@@ -129,7 +137,49 @@ public class ActivityTumKategorilerOdemeler extends AppCompatActivity {
                 geciciOdeme.setOdemeHatirlatmaAyGunu(cursor.getInt(cursor.getColumnIndex("OdemeHatirlatmaAyGunu")));
                 geciciOdeme.setOdemeParaBirimi(cursor.getString(cursor.getColumnIndex("OdemeParaBirimi")));
 
-                tumOdemeler.add(geciciOdeme);
+                if(geciciOdeme.getOdemeKalanTaksitSayisi()<1)
+                {
+
+                }else
+                {
+                    tumOdemeler.add(geciciOdeme);
+                }
+
+
+
+            }
+        }
+        return tumOdemeler;
+    }
+
+
+
+    private ArrayList<Odemeler> tumBitenOdemeleriGetir()
+    {
+        //2. yi null geçtik hepsini getir dedik columnların.
+        Cursor cursor=getContentResolver().query(CONTENT_URI,new String[]{"OdemeId,OdemeBaslik,OdemeKategoriAdi,OdemeOdenenTaksitSayisi,OdemeKalanTaksitSayisi,OdemeAylikFiyat,OdemeAylikHatirlat,OdemeHatirlatmaAyGunu,OdemeParaBirimi"},"OdemeKalanTaksitSayisi=?",new String[]{String.valueOf(0)},null);
+
+
+
+        if(cursor!=null) {
+            while (cursor.moveToNext()) {
+
+                Odemeler geciciOdeme = new Odemeler();
+                geciciOdeme.setOdemeId(cursor.getInt(cursor.getColumnIndex("OdemeId")));
+                geciciOdeme.setOdemeBaslik(cursor.getString(cursor.getColumnIndex("OdemeBaslik")));
+                geciciOdeme.setOdemeKategoriAdi(cursor.getString(cursor.getColumnIndex("OdemeKategoriAdi")));
+                geciciOdeme.setOdemeOdenenTaksitSayisi(cursor.getInt(cursor.getColumnIndex("OdemeOdenenTaksitSayisi")));
+                geciciOdeme.setOdemeKalanTaksitSayisi(cursor.getInt(cursor.getColumnIndex("OdemeKalanTaksitSayisi")));
+                geciciOdeme.setOdemeAylikFiyat(cursor.getInt(cursor.getColumnIndex("OdemeAylikFiyat")));
+                geciciOdeme.setOdemeAylikHatirlat(cursor.getInt(cursor.getColumnIndex("OdemeAylikHatirlat")));
+                geciciOdeme.setOdemeHatirlatmaAyGunu(cursor.getInt(cursor.getColumnIndex("OdemeHatirlatmaAyGunu")));
+                geciciOdeme.setOdemeParaBirimi(cursor.getString(cursor.getColumnIndex("OdemeParaBirimi")));
+
+
+                    tumOdemeler.add(geciciOdeme);
+
+
+
 
             }
         }

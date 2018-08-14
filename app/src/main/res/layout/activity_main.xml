@@ -26,17 +26,40 @@
 
             android:layout_height="0dp">
 
-            <TextView
-                android:id="@+id/textGrid"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="sans-serif"
-                android:text="Ödeme Bilgileri"
-                android:textAlignment="center"
-                android:textColor="@color/anaBeyaz"
-                android:textSize="35sp"
-                android:typeface="sans" />
+                android:layout_marginLeft="25dp"
+
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="5dp"
+                android:clickable="true"
+                app:cardCornerRadius="13dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/anaYesilTrans">
+
+                    <TextView
+                        android:id="@+id/textGrid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:fontFamily="@font/nobile"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="Ödeme Takip"
+                        android:textAlignment="center"
+                        android:textColor="@color/darkGrey"
+                        android:textSize="30sp"
+                        android:typeface="monospace" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
 
         </RelativeLayout>
@@ -66,7 +89,7 @@
                 app:cardElevation="8dp"
                 android:clickable="true"
                 android:tint="@color/yazi_rengi_degis"
-                android:foreground="@drawable/card_arkaplan"
+                android:foreground="@drawable/card_ev_arkaplan"
                 >
 
 
@@ -115,7 +138,7 @@
                 app:cardElevation="8dp"
                 android:clickable="true"
                 android:tint="@color/yazi_rengi_degis"
-                android:foreground="@drawable/card_arkaplan">
+                android:foreground="@drawable/card_alisveris_arkaplan">
 
 
                 <LinearLayout
@@ -161,7 +184,7 @@
                 app:cardElevation="8dp"
                 android:clickable="true"
                 android:tint="@color/yazi_rengi_degis"
-                android:foreground="@drawable/card_arkaplan">
+                android:foreground="@drawable/card_kisisel_arkaplan">
 
 
                 <LinearLayout
@@ -208,7 +231,7 @@
                 app:cardElevation="8dp"
                 android:clickable="true"
                 android:tint="@color/yazi_rengi_degis"
-                android:foreground="@drawable/card_arkaplan">
+                android:foreground="@drawable/card_odemeler_arkaplan">
 
 
                 <LinearLayout
@@ -254,7 +277,7 @@
                 app:cardElevation="8dp"
                 android:clickable="true"
                 android:tint="@color/yazi_rengi_degis"
-                android:foreground="@drawable/card_arkaplan"
+                android:foreground="@drawable/card_gunugelenler_arkaplan"
                 >
 
 
@@ -301,7 +324,7 @@
                 app:cardElevation="8dp"
                 android:clickable="true"
                 android:tint="@color/yazi_rengi_degis"
-                android:foreground="@drawable/card_arkaplan">
+                android:foreground="@drawable/card_bitenler_arkaplan">
 
 
                 <LinearLayout

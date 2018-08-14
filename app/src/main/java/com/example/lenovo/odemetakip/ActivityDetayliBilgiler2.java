@@ -187,7 +187,11 @@ public class ActivityDetayliBilgiler2 extends AppCompatActivity {
         {
             case R.id.item1_bilgileri_guncelle:
             {
-                Toast.makeText(this, "Güncelle sayfası yakında!", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "Güncelle sayfası yakında!", Toast.LENGTH_SHORT).show();
+
+                FragmentDialogGuncelle fragmentDialogGuncelle=new FragmentDialogGuncelle(putExtasOdemeler);
+                fragmentDialogGuncelle.show(getSupportFragmentManager(),"dialogGuncelle");
+
                 return true;
             }
             case R.id.item2_anaSayfa:
@@ -201,4 +205,6 @@ public class ActivityDetayliBilgiler2 extends AppCompatActivity {
         }
 
     }
+
+
 }

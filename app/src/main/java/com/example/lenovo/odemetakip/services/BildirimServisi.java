@@ -233,6 +233,7 @@ public class BildirimServisi extends IntentService {
 
 
 
+
        Intent pendingIntent=new Intent(this, ActivityGunuGelenler.class);
        pendingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
@@ -242,12 +243,12 @@ public class BildirimServisi extends IntentService {
             String message="Aman unutayım deme, bugün "+baslik+" isimli ödemenin "+odenecekAy+". taksitini ödeyeceksin. Ödeyeceğin tutar : "+fiyat+" "+paraBirimi+" Hadi görüşürüz bu kıyağımı da unutma :)";
 
         @SuppressLint("ResourceAsColor") Notification builder=new NotificationCompat.Builder(this,"Yeni mesaj")
-       .setSmallIcon(R.drawable.iconum)
+       .setSmallIcon(R.drawable.appicon)
        .setContentTitle("ÖDEME GÜNÜN GELDİ DOSTUM!")
 
        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
-            .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.yapilanodemeler))
+            .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.appicon))
             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
             .setContentTitle("ÖDEME GÜNÜN GELDİ DOSTUM!")
             .setStyle(new NotificationCompat.BigTextStyle()
@@ -255,6 +256,7 @@ public class BildirimServisi extends IntentService {
             .setContentText(message)
 
                 .setColor(R.color.anaYesil).setOnlyAlertOnce(true)
+                //.addAction(R.drawable.iconum,"Şimdi Öde !",bildirimIntent)
 
             .setAutoCancel(true)
                 .setContentIntent(bildirimIntent)

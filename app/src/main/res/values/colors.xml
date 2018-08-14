@@ -16,6 +16,30 @@
 
     <color name="darkBeyaz3">#bfbed1c9</color>
 
+    <color name="anaBeyazTransparent">#b3bed1c9</color>
+
+    <color name="koyuKirmizi">#cb5e2347</color>
+    <color name="turuncu">#ce916e00</color>
+    <color name="mor">#d2711891</color>
+    <color name="kirmizi">#d2912f2f</color>
+    <color name="yesil">#d3388e3c</color>
+    <color name="koyuYesil">#d3285928</color>
+    <color name="AcikMavi">#c4122c64</color>
+
+
+
+    <color name="koyuKirmiziTik">#825e2347</color>
+    <color name="turuncuTik">#7f916e00</color>
+    <color name="morTik">#82711891</color>
+    <color name="kirmiziTik">#82912f2f</color>
+    <color name="yesilTik">#81388e3c</color>
+    <color name="koyuYesilTik">#82285928</color>
+    <color name="AcikMaviTik">#81122c64</color>
+
+
+
+    <color name="anaYesilTrans">#064b54</color>
+    <color name="darkGrey">#7681ac99</color>
 
 
 </resources>

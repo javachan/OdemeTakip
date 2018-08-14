@@ -197,7 +197,7 @@ public class ActivityMain extends AppCompatActivity {
     {
         ImageView arkaplanResim=findViewById(R.id.iv_arkaplanImage);
         Glide.with(this)
-                .load(R.drawable.b9)
+                .load(R.drawable.arkapln4)
                 .into(arkaplanResim);
     }
 

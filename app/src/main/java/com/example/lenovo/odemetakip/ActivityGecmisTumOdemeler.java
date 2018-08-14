@@ -42,7 +42,7 @@ public class ActivityGecmisTumOdemeler extends AppCompatActivity {
 
         rv_gecmisOdemelerRecycListe=findViewById(R.id.rc_gecmis_odemeler_Liste);
         LinearLayoutManager manager=new LinearLayoutManager(this);
-
+        manager.setReverseLayout(true);
         rv_gecmisOdemelerRecycListe.setLayoutManager(manager);
         mAdapterGecmisOdemelerListesi=new AdapterGecmisOdemelerListesi(this,tumGecmisOdemeler);
 

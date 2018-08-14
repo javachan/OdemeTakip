@@ -119,8 +119,17 @@ public class ActivityYeniOdeme extends AppCompatActivity {
         Uri uri=getContentResolver().insert(CONTENT_URI, values);
         //fragment olmadigi için getActivity yazma gereği duymadik.. activity de old için direk getContentResolverdan basladk.
 
-        Toast.makeText(this, "Ödeme eklendi.. "+uri, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "Ödeme eklendi.. "+uri, Toast.LENGTH_SHORT).show();
 
+        odemeBaslik_ed.setText("");
+        odemeMiktar_ed.setText("");
+
+        odemeGunler_sp.setSelection(0);
+        odemeKategori_sp.setSelection(0);
+        odemeParaBirimi_sp.setSelection(0);
+        odemeTaksitSayisi_sp.setSelection(0);
+
+        Toast.makeText(this, "Yeni ödeme eklendi", Toast.LENGTH_SHORT).show();
 
 
     }
