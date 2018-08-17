@@ -222,27 +222,52 @@
 
                         </LinearLayout>
 
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="22dp"
-                            android:layout_marginTop="40dp"
-                            android:text="Taksit Sayısı:"
-                            android:textSize="13dp" />
-
-                        <Spinner
-                            android:id="@+id/sp_guncelle_taksitSayisi"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
 
-                            android:layout_marginRight="20dp"
-                            android:backgroundTint="@color/anaYesil"
-                            android:dropDownWidth="match_parent"
-                            android:entries="@array/taksitler_array"
-                            android:foreground="@drawable/form_arka_plan"
-                            android:theme="@style/mySpinnerItemStyleKategori"></Spinner>
+                            <EditText
+                                android:id="@+id/ed_guncelle_kalanTaksit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="45dp"
+
+                                android:layout_marginRight="5dp"
+
+                                android:background="@drawable/form_arka_plan"
+
+
+                                android:foregroundTint="@color/anaYesil"
+                                android:hint="Kalan Taksit"
+
+                                android:inputType="number"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/anaYesil" />
+
+
+                            <EditText
+                                android:id="@+id/ed_guncelle_odenenTaksit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="0dp"
+                                android:background="@drawable/form_arka_plan"
+                                android:foregroundTint="@color/anaYesil"
+
+                                android:hint="Ödenen Taksit"
+                                android:inputType="number"
+
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/anaYesil" />
+                        </LinearLayout>
+
+
 
 
                         <Switch

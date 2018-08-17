@@ -3,6 +3,7 @@ package com.example.lenovo.odemetakip.services;
 import android.annotation.SuppressLint;
 import android.app.IntentService;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ContentValues;
@@ -15,6 +16,8 @@ import android.graphics.BitmapFactory;
 import android.icu.util.LocaleData;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -58,6 +61,26 @@ public class BildirimServisi extends IntentService {
 
        Log.d(TAG,"bildirim : onHandleIntent");
 
+
+
+
+
+        Calendar calendar2 = Calendar.getInstance();
+        SimpleDateFormat mdformat2 = new SimpleDateFormat("HH");
+        String strDate2 = mdformat2.format(calendar2.getTime());
+
+        Log.e("saat",strDate2);
+
+        if(strDate2.equals("23"))
+        {
+            //her gün saat 23 de odemeGunuGelenler tablom sıfırlansın ki bir sonraki ay ödemesi gelenler için
+            //yeniden bildirim gönderilebilsin.
+
+            gunuGelenOdemelerTablosunuTemizle();
+
+            Log.e("saat","calisiyor.");
+            //eğer saat 23 ise, ödenenler i temizle ki bir sonraki ay bildirim gidebilsin.
+        }
 
 
         odenmesiGerekenOdemelerListe=odemeZamaniGelenOdemeleriGetir();
@@ -212,7 +235,8 @@ public class BildirimServisi extends IntentService {
     }
 
 
-    private void bildirimYolla(int id,String baslik, int fiyat, int odenecekAy,String paraBirimi)
+
+    private void bildirimYolla(int id, String baslik, int fiyat, int odenecekAy, String paraBirimi)
     {
 
 
@@ -232,6 +256,9 @@ public class BildirimServisi extends IntentService {
 
 
 
+        String CHANNEL_ID = "my_channel_01";//
+        CharSequence name = getString(R.string.app_name);//
+        int importance = NotificationManager.IMPORTANCE_HIGH;
 
 
        Intent pendingIntent=new Intent(this, ActivityGunuGelenler.class);
@@ -242,7 +269,7 @@ public class BildirimServisi extends IntentService {
 
             String message="Aman unutayım deme, bugün "+baslik+" isimli ödemenin "+odenecekAy+". taksitini ödeyeceksin. Ödeyeceğin tutar : "+fiyat+" "+paraBirimi+" Hadi görüşürüz bu kıyağımı da unutma :)";
 
-        @SuppressLint("ResourceAsColor") Notification builder=new NotificationCompat.Builder(this,"Yeni mesaj")
+        @SuppressLint("ResourceAsColor") Notification builder=new NotificationCompat.Builder(this,CHANNEL_ID)
        .setSmallIcon(R.drawable.appicon)
        .setContentTitle("ÖDEME GÜNÜN GELDİ DOSTUM!")
 
@@ -254,6 +281,7 @@ public class BildirimServisi extends IntentService {
             .setStyle(new NotificationCompat.BigTextStyle()
                     .bigText(message))
             .setContentText(message)
+
 
                 .setColor(R.color.anaYesil).setOnlyAlertOnce(true)
                 //.addAction(R.drawable.iconum,"Şimdi Öde !",bildirimIntent)

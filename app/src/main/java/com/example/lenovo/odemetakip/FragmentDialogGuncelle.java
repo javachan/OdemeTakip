@@ -30,15 +30,19 @@ public class FragmentDialogGuncelle extends DialogFragment {
 
     static final Uri CONTENT_URI= OdemelerProvider.CONTENT_URI; //ana linki aldık.
 
+    static final Uri CONTENT_URI_GECMIS_ODEMELER= OdemelerProvider.CONTENT_URI_GECMIS_ODEMELER; //ana linki aldık.
+
     private Button guncelleButton;
     private ImageButton cancelButton;
     private EditText guncelleBaslik_ed;
     private Spinner guncelleKategori_sp;
     private Spinner  guncelleGunler_sp;
     private EditText guncelleMiktar_ed;
-    private Spinner  guncelleTaksitSayisi_sp;
+
     private Switch guncelleAylikHatirlasinMi_sw;
     private Spinner  guncelleParaBirimi_sp;
+    private EditText guncelleKalanTaksit_ed;
+    private EditText guncelleOdenenTaksit_ed;
 
     Odemeler guncellenecekOdeme;
 
@@ -65,13 +69,15 @@ public class FragmentDialogGuncelle extends DialogFragment {
         guncelleKategori_sp=view.findViewById(R.id.sp_guncelle_kategori);
             guncelleGunler_sp=view.findViewById(R.id.sp_guncelle_gunler);
             guncelleMiktar_ed=view.findViewById(R.id.ed_guncelle_odemeMiktar);
-            guncelleTaksitSayisi_sp=view.findViewById(R.id.sp_guncelle_taksitSayisi);
+           // guncelleTaksitSayisi_sp=view.findViewById(R.id.sp_guncelle_taksitSayisi);
             guncelleAylikHatirlasinMi_sw=view.findViewById(R.id.sw_guncelle_aylikHatirlansinMi);
             guncelleParaBirimi_sp=view.findViewById(R.id.sp_guncelle_paraBirimi);
+        guncelleKalanTaksit_ed=view.findViewById(R.id.ed_guncelle_kalanTaksit);
+        guncelleOdenenTaksit_ed=view.findViewById(R.id.ed_guncelle_odenenTaksit);
 
 
-
-
+        guncelleKalanTaksit_ed.setText(String.valueOf(guncellenecekOdeme.getOdemeKalanTaksitSayisi()));
+        guncelleOdenenTaksit_ed.setText(String.valueOf(guncellenecekOdeme.getOdemeOdenenTaksitSayisi()));
 
 
         guncelleBaslik_ed.setText(guncellenecekOdeme.getOdemeBaslik());
@@ -152,7 +158,7 @@ public class FragmentDialogGuncelle extends DialogFragment {
 
         }
 
-        guncelleTaksitSayisi_sp.setSelection(TaksitCountIndex);
+
 
 
         int ParaBirimiCountIndex=0;
@@ -223,10 +229,13 @@ public class FragmentDialogGuncelle extends DialogFragment {
                                 String kategori=guncelleKategori_sp.getSelectedItem().toString();
                                 int hatirlatmaAyGunu=Integer.valueOf(guncelleGunler_sp.getSelectedItem().toString());
                                 int odenecekMiktar=Integer.valueOf(guncelleMiktar_ed.getText().toString());
-                                int taksitSayisi=Integer.valueOf(guncelleTaksitSayisi_sp.getSelectedItem().toString());
+                               // int taksitSayisi=Integer.valueOf(guncelleTaksitSayisi_sp.getSelectedItem().toString());
+
+                               int kalanTaksit=Integer.valueOf(guncelleKalanTaksit_ed.getText().toString());
+                               int odenenTaksit=Integer.valueOf(guncelleOdenenTaksit_ed.getText().toString());
                                 String paraBirimi=guncelleParaBirimi_sp.getSelectedItem().toString();
 
-                                verileriGuncelle(guncellenecekOdeme.getOdemeId(),hatirlansinMi,odemeBasligi,kategori,hatirlatmaAyGunu,odenecekMiktar,taksitSayisi,paraBirimi);
+                                verileriGuncelle(guncellenecekOdeme.getOdemeId(),hatirlansinMi,odemeBasligi,kategori,hatirlatmaAyGunu,odenecekMiktar,paraBirimi,kalanTaksit,odenenTaksit);
 
                                // ((ActivityDetayliBilgiler2)getActivity().veriAnlıkGuncelle(hatirlansinMi,odemeBasligi,kategori,hatirlatmaAyGunu,odenecekMiktar,taksitSayisi,paraBirimi));
 
@@ -254,15 +263,16 @@ public class FragmentDialogGuncelle extends DialogFragment {
         });
     }
 
-    private void verileriGuncelle(int guncelleID, int hatirlansinMi, String odemeBasligi, String kategori, int hatirlatmaAyGunu, int odenecekMiktar, int taksitSayisi, String paraBirimi)
+    private void verileriGuncelle(int guncelleID, int hatirlansinMi, String odemeBasligi, String kategori, int hatirlatmaAyGunu, int odenecekMiktar, String paraBirimi,int kalanTaksit, int odenenTaksit)
     {
         ContentValues values=new ContentValues();
         values.put("OdemeBaslik", odemeBasligi);
         values.put("OdemeKategoriAdi",kategori);
 
-        int kalanTaksit=(taksitSayisi-guncellenecekOdeme.getOdemeOdenenTaksitSayisi());
+
 
         values.put("OdemeKalanTaksitSayisi",kalanTaksit);
+        values.put("OdemeOdenenTaksitSayisi",odenenTaksit);
         values.put("OdemeAylikFiyat",odenecekMiktar);
         values.put("OdemeAylikHatirlat",hatirlansinMi);
         values.put("OdemeHatirlatmaAyGunu",hatirlatmaAyGunu);
@@ -270,6 +280,12 @@ public class FragmentDialogGuncelle extends DialogFragment {
 
 
         getActivity().getContentResolver().update(CONTENT_URI,values,"OdemeId=?",new String[]{String.valueOf(guncelleID)});
+
+
+        ContentValues values2=new ContentValues();
+        values2.put("GecmisOdemeBaslik",odemeBasligi);
+
+        getActivity().getContentResolver().update(CONTENT_URI_GECMIS_ODEMELER,values2,"GecmisOdemeId=?",new String[]{String.valueOf(guncelleID)});
     }
 
     private String kategoriBul(int odemeId)
