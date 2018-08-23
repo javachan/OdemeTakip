@@ -14,3 +14,7 @@ her saat başı bildirim gönderir. Ve bu bildirimler ödemediğiniz sürece dev
 Ayrıca uygulamada geçmiş ödemelerinizi,hangi ödeme ne zaman saat kaçta yapılmış, kaç taksit ödenmiş/kalmış gibi detaylı bilgileri 
 görebilir, bu bilgilerle sadece günü gelen ödemeleri hatırlatmaktan ziyade geçmiş ödemelerinde takibi ile sizi büyük bir takip 
 sorumluluğundan kurtarır. 
+
+![gg1](https://user-images.githubusercontent.com/37477789/44553216-73a37e80-a735-11e8-8c2f-6d5de80e6063.gif)
+
+![gg2](https://user-images.githubusercontent.com/37477789/44553026-e2cca300-a734-11e8-93b8-eef70d640106.gif)
