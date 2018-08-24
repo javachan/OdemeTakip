@@ -13,6 +13,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.icu.util.LocaleData;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -49,6 +50,9 @@ public class BildirimServisi extends IntentService {
     public static final String TAG=Thread.currentThread().getName();
 
     ArrayList<Odemeler> odenmesiGerekenOdemelerListe=new ArrayList<>();
+    NotificationManager notificationManager;
+    @SuppressLint("ResourceAsColor")
+    Notification builder;
 
     public BildirimServisi() {
         super("BildirimServisi");
@@ -112,6 +116,7 @@ public class BildirimServisi extends IntentService {
 
                 Log.e("saat",strDate);
 
+
                 if(strDate.equals("23"))
                 {
                     //her gün saat 23 de odemeGunuGelenler tablom sıfırlansın ki bir sonraki ay ödemesi gelenler için
@@ -124,7 +129,7 @@ public class BildirimServisi extends IntentService {
                 }
 
                 //////////////////////////////////////////////////77
-               else if(gunuGelenlerdeVarMi(geciciOdeme.getOdemeId()))
+             else  if(gunuGelenlerdeVarMi(geciciOdeme.getOdemeId()))
                 {
                     //varsa ekleme yapmasın.
                     Log.e("var",geciciOdeme.getOdemeBaslik());
@@ -257,8 +262,7 @@ public class BildirimServisi extends IntentService {
 
 
         String CHANNEL_ID = "my_channel_01";//
-        CharSequence name = getString(R.string.app_name);//
-        int importance = NotificationManager.IMPORTANCE_HIGH;
+
 
 
        Intent pendingIntent=new Intent(this, ActivityGunuGelenler.class);
@@ -269,7 +273,7 @@ public class BildirimServisi extends IntentService {
 
             String message="Aman unutayım deme, bugün "+baslik+" isimli ödemenin "+odenecekAy+". taksitini ödeyeceksin. Ödeyeceğin tutar : "+fiyat+" "+paraBirimi+" Hadi görüşürüz bu kıyağımı da unutma :)";
 
-        @SuppressLint("ResourceAsColor") Notification builder=new NotificationCompat.Builder(this,CHANNEL_ID)
+        builder=new NotificationCompat.Builder(this,CHANNEL_ID)
        .setSmallIcon(R.drawable.appicon)
        .setContentTitle("ÖDEME GÜNÜN GELDİ DOSTUM!")
 
@@ -283,18 +287,30 @@ public class BildirimServisi extends IntentService {
             .setContentText(message)
 
 
-                .setColor(R.color.anaYesil).setOnlyAlertOnce(true)
+               // .setColor(R.color.anaYesil).setOnlyAlertOnce(true)
                 //.addAction(R.drawable.iconum,"Şimdi Öde !",bildirimIntent)
 
             .setAutoCancel(true)
                 .setContentIntent(bildirimIntent)
+                .build();
 
 
-            .build();
+
 
 
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(id, builder);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
+        {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, "Yeni Ödeme !", NotificationManager.IMPORTANCE_DEFAULT);
+
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+
+        notificationManager.notify(id /* Request Code */, builder);
+
 
 
 
