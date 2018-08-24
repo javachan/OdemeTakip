@@ -15,6 +15,11 @@
         app:showAsAction="never">
 
     </item>
+    <item android:id="@+id/item1_bilgileri_sil"
+        android:title="Sil"
+        app:showAsAction="never">
+
+    </item>
 
 
 

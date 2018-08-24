@@ -21,6 +21,9 @@ public class BootReceiver extends BroadcastReceiver {
         Intent bildirimIntent2=new Intent(context, BildirimServisi.class);
         PendingIntent pendingIntent=PendingIntent.getService(context,100, bildirimIntent2,PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,10000,3600000,pendingIntent);
+
+
+
         ///
 
 
