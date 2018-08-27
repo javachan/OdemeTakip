@@ -1,4 +1,4 @@
-package com.example.lenovo.odemetakip.services;
+package com.yusufali.lenovo.odemetakip.services;
 
 import android.annotation.SuppressLint;
 import android.app.IntentService;
@@ -23,17 +23,17 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.lenovo.odemetakip.ActivityGunuGelenler;
-import com.example.lenovo.odemetakip.ActivityMain;
-import com.example.lenovo.odemetakip.ActivityTumKategorilerOdemeler;
-import com.example.lenovo.odemetakip.R;
+import com.yusufali.lenovo.odemetakip.ActivityGunuGelenler;
+import com.yusufali.lenovo.odemetakip.ActivityMain;
+import com.yusufali.lenovo.odemetakip.ActivityTumKategorilerOdemeler;
+import com.yusufali.lenovo.odemetakip.R;
 
-import com.example.lenovo.odemetakip.adapter.AdapterOdemelerListesi;
-import com.example.lenovo.odemetakip.data.DatabaseHelper;
-import com.example.lenovo.odemetakip.data.GunuGelenOdemeler;
-import com.example.lenovo.odemetakip.data.OdemeTakipContract;
-import com.example.lenovo.odemetakip.data.Odemeler;
-import com.example.lenovo.odemetakip.data.OdemelerProvider;
+import com.yusufali.lenovo.odemetakip.adapter.AdapterOdemelerListesi;
+import com.yusufali.lenovo.odemetakip.data.DatabaseHelper;
+import com.yusufali.lenovo.odemetakip.data.GunuGelenOdemeler;
+import com.yusufali.lenovo.odemetakip.data.OdemeTakipContract;
+import com.yusufali.lenovo.odemetakip.data.Odemeler;
+import com.yusufali.lenovo.odemetakip.data.OdemelerProvider;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -303,7 +303,7 @@ public class BildirimServisi extends IntentService {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
         {
             int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, "Yeni Ödeme !", NotificationManager.IMPORTANCE_DEFAULT);
+             @SuppressLint("WrongConstant") NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, "Yeni Ödeme !", NotificationManager.IMPORTANCE_MAX);
 
             notificationManager.createNotificationChannel(notificationChannel);
         }
@@ -323,16 +323,71 @@ public class BildirimServisi extends IntentService {
         Calendar calendar = Calendar.getInstance();
         int bugun = calendar.get(Calendar.DAY_OF_MONTH);
 
+        Log.e("ay",String.valueOf(calendar.MONTH)+" ss");
 
-        if(bugun==odemeHatirlatmaAyGunu) {
-            if(kalanTaksitSayisi>0)
-                return true;
-            else
-                return false;
+        int ay=calendar.MONTH;
+        if(ay==2 && (bugun==28 || bugun==29) )
+        {
+            if(bugun==odemeHatirlatmaAyGunu)
+            {
+                if (kalanTaksitSayisi > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else if((bugun+1)==odemeHatirlatmaAyGunu)
+            {
+                if (kalanTaksitSayisi > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else if((bugun+2)==odemeHatirlatmaAyGunu)
+            {
+                if (kalanTaksitSayisi > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else if((bugun+3)==odemeHatirlatmaAyGunu)
+            {
+                if (kalanTaksitSayisi > 0)
+                    return true;
+                else
+                    return false;
+            }
+
+
+        }
+        else if((ay==4 || ay==6 || ay==9 || ay ==11) && bugun==30)
+        {
+            if(bugun==odemeHatirlatmaAyGunu)
+            {
+                if (kalanTaksitSayisi > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else if((bugun+1)==odemeHatirlatmaAyGunu)
+            {
+                if (kalanTaksitSayisi > 0)
+                    return true;
+                else
+                    return false;
+            }
         }
 
-        else
-            return false;
+        else {
+            if (bugun == odemeHatirlatmaAyGunu) {
+                if (kalanTaksitSayisi > 0)
+                    return true;
+                else
+                    return false;
+            } else
+                return false;
+        }
+        return false;
+
 
     }
 
