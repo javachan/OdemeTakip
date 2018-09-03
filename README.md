@@ -15,6 +15,14 @@ Ayrıca uygulamada geçmiş ödemelerinizi,hangi ödeme ne zaman saat kaçta yap
 görebilir, bu bilgilerle sadece günü gelen ödemeleri hatırlatmaktan ziyade geçmiş ödemelerinde takibi ile sizi büyük bir takip 
 sorumluluğundan kurtarır. 
 
+
+
 ![gg1](https://user-images.githubusercontent.com/37477789/44553216-73a37e80-a735-11e8-8c2f-6d5de80e6063.gif)
 
 ![gg2](https://user-images.githubusercontent.com/37477789/44553026-e2cca300-a734-11e8-93b8-eef70d640106.gif)
+
+
+Android SDK 26(Version 8.0 Android Oreo) ve üstü için android tarafından pil tasarrufunu sağlamak amacıyla arkaplan servislerine
+sınırlama getirilmiştir. Bu yüzden servisin arkaplanda sürekli çalışması ve uygulamaya girmeye gerek kalmadan bildirim gönderebilmesi için Oreo kullanıcılarının ufak bir ayar yapması gerekmektedir.
+
+Ayarlar -> Pil -> İzlenmeyen uygulamalar -> Yeni uygulama ekle kısmından Ödeme Takipi seçiyoruz. Böylelikle uygulamamız telefon aktif olduğu sürece arkaplanda çalışıyor. Oreo sürümü altındakiler için böyle bir ayar yapmaya gerek yoktur.
