@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#e74b4c4e</color>
-    <color name="colorPrimaryDark">#f508444d</color>
+    <color name="colorPrimary">#4b4c4e</color>
+    <color name="colorPrimaryDark">#08444d</color>
+
     <color name="colorAccent">#796811</color>
     <color name="anaYesil">#e2064b54</color>
     <color name="anaBeyaz">#d6ffffff</color>
